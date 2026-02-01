@@ -8,4 +8,4 @@ Frontend for [Car Logo Quiz](https://www.carlogoquiz.com), built with **Astro** 
 - **UI Library:** [Svelte 5](https://svelte.dev/) (Interactive Islands)
 - **Runtime:** [Cloudflare Workers](https://developers.cloudflare.com/workers/)
 - **Styling:** CSS Custom Properties + Scoped Styles
-- **Backend:** RPC via Service Bindings to `carlogoquiz-api`
+- **Backend:** RPC via Service Bindings to [`carlogoquiz-api`](https://github.com/CarQuizHub/carlogoquiz-api)
