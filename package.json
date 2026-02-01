@@ -1,0 +1,29 @@
+{
+  "name": "carlogoquiz-web",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Car Logo Quiz - Frontend Worker",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "wrangler dev",
+    "deploy": "astro build && wrangler deploy",
+    "deploy:staging": "astro build && wrangler deploy --env staging",
+    "deploy:dev": "astro build && wrangler deploy --env dev",
+    "types": "wrangler types",
+    "check": "astro check && svelte-check --tsconfig ./tsconfig.json"
+  },
+  "dependencies": {
+    "astro": "^5.7.10",
+    "@astrojs/cloudflare": "^12.6.0",
+    "@astrojs/svelte": "^7.0.9",
+    "@astrojs/check": "^0.9.4",
+    "svelte": "^5.28.2",
+    "svelte-check": "^4.2.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250124.0",
+    "typescript": "^5.7.3",
+    "wrangler": "^4.0.0"
+  }
+}

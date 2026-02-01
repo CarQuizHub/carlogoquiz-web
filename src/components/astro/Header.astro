@@ -1,0 +1,78 @@
+---
+interface Props {
+  showBackLink?: boolean;
+}
+
+const { showBackLink = false } = Astro.props;
+---
+
+<header class="header">
+  <div class="header-content">
+    {showBackLink ? (
+      <a href="/" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        <span>Exit</span>
+      </a>
+    ) : (
+      <div class="logo">
+        <span class="logo-icon">🚗</span>
+        <span class="logo-text">CarLogoQuiz</span>
+      </div>
+    )}
+  </div>
+</header>
+
+<style>
+  .header {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .header-content {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+
+  .logo-text {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .back-link:hover {
+    color: var(--color-accent-secondary);
+  }
+
+  .back-link svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .back-link:hover svg {
+    transform: translateX(-3px);
+  }
+</style>
