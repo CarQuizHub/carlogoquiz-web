@@ -189,54 +189,91 @@ import { tickerItems } from '@lib/const';
       </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="mt-16 md:mt-24 w-full">
-      <!-- Steps -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8" data-reveal-stagger>
+<!-- How It Works Section -->
+<section class="mt-16 md:mt-24 w-full">
+  <!-- Steps -->
+  <div class="relative grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8" data-reveal-stagger>
+    
+    <!-- Progress line (hidden on mobile) -->
+    <div class="hidden md:block absolute top-14 left-0 right-0 h-0.5 bg-white/5 -z-10" aria-hidden="true">
+      <div class="progress-line h-full bg-gradient-accent origin-left scale-x-0"></div>
+    </div>
+    
+    <!-- Step 1 -->
+    <div class="card card-custom p-8 relative overflow-hidden group cursor-default
+                transition-all duration-500 hover:border-accent-primary/30 
+                hover:shadow-[0_0_40px_rgba(255,60,0,0.15)] hover:-translate-y-2">
+      <span class="absolute -top-4 -left-1 text-[7rem] font-extrabold leading-none text-white/[0.03] font-mono select-none pointer-events-none 
+                   transition-all duration-500 group-hover:text-white/[0.06] group-hover:scale-110">01</span>
+      
+      <div class="relative z-10">
+        <!-- Animated badge -->
+        <div class="relative w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center text-sm font-bold text-bg-primary font-mono mb-5
+                    transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-glow-sm">
+          <div class="absolute inset-0 bg-gradient-accent rounded-lg blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+          <span class="relative z-10">01</span>
+        </div>
         
-        <!-- Step 1 -->
-        <div class="card card-custom p-8 relative overflow-hidden group">
-          <span class="absolute -top-4 -left-1 text-[7rem] font-extrabold leading-none text-white/[0.03] font-mono select-none pointer-events-none">01</span>
-          <div class="relative z-10">
-            <div class="w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center text-sm font-bold text-bg-primary font-mono mb-5">
-              01
-            </div>
-            <h3 class="text-lg font-bold text-text-primary mb-2 uppercase tracking-wide">See the Logo</h3>
-            <p class="text-sm text-text-secondary leading-relaxed">
-              A car logo appears on screen — some iconic, some obscure. Study it carefully before making your move.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="card card-custom p-8 relative overflow-hidden group">
-          <span class="absolute -top-4 -left-1 text-[7rem] font-extrabold leading-none text-white/[0.03] font-mono select-none pointer-events-none">02</span>
-          <div class="relative z-10">
-            <div class="w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center text-sm font-bold text-bg-primary font-mono mb-5">
-              02
-            </div>
-            <h3 class="text-lg font-bold text-text-primary mb-2 uppercase tracking-wide">Make Your Guess</h3>
-            <p class="text-sm text-text-secondary leading-relaxed">
-              Type the brand name or choose from multiple options. The faster and more accurate, the better.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="card card-custom p-8 relative overflow-hidden group">
-          <span class="absolute -top-4 -left-1 text-[7rem] font-extrabold leading-none text-white/[0.03] font-mono select-none pointer-events-none">03</span>
-          <div class="relative z-10">
-            <div class="w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center text-sm font-bold text-bg-primary font-mono mb-5">
-              03
-            </div>
-            <h3 class="text-lg font-bold text-text-primary mb-2 uppercase tracking-wide">Climb the Ranks</h3>
-            <p class="text-sm text-text-secondary leading-relaxed">
-              Score points, beat your personal record, and challenge your friends to see who knows their cars best.
-            </p>
-          </div>
-        </div>
+        <h3 class="text-lg font-bold text-text-primary mb-2 uppercase tracking-wide 
+                   transition-colors duration-300 group-hover:text-accent-primary">
+          See the Logo
+        </h3>
+        <p class="text-sm text-text-secondary leading-relaxed transition-colors duration-300 group-hover:text-text-primary">
+          A car logo appears on screen — some iconic, some obscure. Study it carefully before making your move.
+        </p>
       </div>
-    </section>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="card card-custom p-8 relative overflow-hidden group cursor-default
+                transition-all duration-500 hover:border-accent-primary/30 
+                hover:shadow-[0_0_40px_rgba(255,60,0,0.15)] hover:-translate-y-2">
+      <span class="absolute -top-4 -left-1 text-[7rem] font-extrabold leading-none text-white/[0.03] font-mono select-none pointer-events-none 
+                   transition-all duration-500 group-hover:text-white/[0.06] group-hover:scale-110">02</span>
+      
+      <div class="relative z-10">
+        <div class="relative w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center text-sm font-bold text-bg-primary font-mono mb-5
+                    transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-glow-sm">
+          <div class="absolute inset-0 bg-gradient-accent rounded-lg blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+          <span class="relative z-10">02</span>
+        </div>
+        
+        <h3 class="text-lg font-bold text-text-primary mb-2 uppercase tracking-wide 
+                   transition-colors duration-300 group-hover:text-accent-primary">
+          Make Your Guess
+        </h3>
+        <p class="text-sm text-text-secondary leading-relaxed transition-colors duration-300 group-hover:text-text-primary">
+          Type the brand name or choose from multiple options. The faster and more accurate, the better.
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="card card-custom p-8 relative overflow-hidden group cursor-default
+                transition-all duration-500 hover:border-accent-primary/30 
+                hover:shadow-[0_0_40px_rgba(255,60,0,0.15)] hover:-translate-y-2">
+      <span class="absolute -top-4 -left-1 text-[7rem] font-extrabold leading-none text-white/[0.03] font-mono select-none pointer-events-none 
+                   transition-all duration-500 group-hover:text-white/[0.06] group-hover:scale-110">03</span>
+      
+      <div class="relative z-10">
+        <div class="relative w-10 h-10 rounded-lg bg-gradient-accent flex items-center justify-center text-sm font-bold text-bg-primary font-mono mb-5
+                    transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-glow-sm">
+          <div class="absolute inset-0 bg-gradient-accent rounded-lg blur-lg opacity-0 group-hover:opacity-60 transition-opacity duration-500"></div>
+          <span class="relative z-10">03</span>
+        </div>
+        
+        <h3 class="text-lg font-bold text-text-primary mb-2 uppercase tracking-wide 
+                   transition-colors duration-300 group-hover:text-accent-primary">
+          Climb the Ranks
+        </h3>
+        <p class="text-sm text-text-secondary leading-relaxed transition-colors duration-300 group-hover:text-text-primary">
+          Score points, beat your personal record, and challenge your friends to see who knows their cars best.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
     <!-- Stats Decoration -->
     <section class="mt-12 md:mt-16 w-full" data-reveal="fade-up">
@@ -460,6 +497,14 @@ import { tickerItems } from '@lib/const';
 </Layout>
 
 <style is:global>
+
+  .progress-line {
+  animation: progressGrow 2s ease-out 0.5s forwards;
+}
+
+@keyframes progressGrow {
+  to { transform: scaleX(1); }
+}
   /* ── Hero sequential entrance ── */
   .hero-seq {
     opacity: 0;
