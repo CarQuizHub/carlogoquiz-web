@@ -1,53 +1,43 @@
 ---
+import "../../styles/global.css"; // ✅ add this
+
 interface Props {
   title: string;
   description?: string;
 }
 
-const { 
-  title, 
-  description = 'Test your knowledge of car brand logos! Can you identify 15 car logos and prove you\'re a true automotive enthusiast?' 
+const {
+  title,
+  description = "Test your knowledge of car brand logos! Can you identify 15 car logos and prove you're a true automotive enthusiast?"
 } = Astro.props;
 
-const fullTitle = title === 'Home' ? 'Car Logo Quiz' : `${title} | Car Logo Quiz`;
+const fullTitle = title === "Home" ? "Car Logo Quiz" : `${title} | Car Logo Quiz`;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="carlogoquiz">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    
+
     <!-- Theme color for mobile browsers -->
-    <meta name="theme-color" content="#0a0a0f" />
-    
+    <meta name="theme-color" content="#0a0a0a" />
+
     <title>{fullTitle}</title>
   </head>
-  <body>
-    <div class="app">
+  <body class="scrollbar-custom">
+    <div class="min-h-screen flex flex-col">
       <slot />
     </div>
   </body>
 </html>
-
-<style is:global>
-  @import '../styles/global.css';
-</style>
-
-<style>
-  .app {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-</style>

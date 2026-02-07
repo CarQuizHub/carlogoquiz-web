@@ -1,0 +1,136 @@
+---
+import Layout from '@components/astro/Layout.astro';
+import Header from '@components/astro/Header.astro';
+
+const faqs = [
+  {
+    question: "How does the quiz work?",
+    answer: "You'll be shown car logos one at a time and need to identify the brand. You have 3 lives - each wrong answer costs you one life. The game ends when you lose all lives or complete all 15 questions."
+  },
+  {
+    question: "How are points calculated?",
+    answer: "Points are based on difficulty. Easy logos earn 10 points, Medium earn 25 points, Hard earn 50 points, Expert earn 100 points, and Legendary logos earn 200 points."
+  },
+  {
+    question: "Do I need to create an account?",
+    answer: "No! You can play immediately without signing up. Your progress is saved locally in your browser."
+  },
+  {
+    question: "How many car brands are included?",
+    answer: "We have over 50 car brands from around the world, ranging from mainstream manufacturers to exotic supercar makers."
+  },
+  {
+    question: "Can I play on mobile?",
+    answer: "Yes! The quiz is fully responsive and works great on phones, tablets, and desktop computers."
+  },
+  {
+    question: "How are difficulty levels determined?",
+    answer: "Difficulty is based on brand recognition and rarity. Common brands like Toyota are easier, while niche manufacturers like Koenigsegg are harder."
+  }
+];
+---
+
+<Layout title="FAQ" description="Frequently asked questions about Car Logo Quiz">
+  <Header showBackLink={true} />
+  
+  <main class="faq-page">
+    <h1 class="page-title">Frequently Asked Questions</h1>
+    
+    <div class="faq-list">
+      {faqs.map((faq, index) => (
+        <div class="faq-item" style={`animation-delay: ${index * 0.1}s`}>
+          <h2 class="faq-question">{faq.question}</h2>
+          <p class="faq-answer">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="cta-section">
+      <p>Ready to test your knowledge?</p>
+      <a href="/quiz" class="cta-button">Start The Quiz →</a>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .faq-page {
+    flex: 1;
+    padding: var(--space-xl) var(--space-md);
+    padding-top: 100px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .page-title {
+    text-align: center;
+    margin-bottom: var(--space-3xl);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .faq-item {
+    background: var(--color-bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    animation: fadeIn 0.5s ease backwards;
+    transition: border-color var(--transition-base);
+  }
+
+  .faq-item:hover {
+    border-color: rgba(255, 60, 0, 0.3);
+  }
+
+  .faq-question {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    color: #ff3c00;
+  }
+
+  .faq-answer {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+
+  .cta-section {
+    text-align: center;
+    margin-top: var(--space-3xl);
+    padding: var(--space-2xl);
+    background: linear-gradient(0deg, rgba(255, 60, 0, 0.1), transparent);
+    border-radius: var(--radius-xl);
+  }
+
+  .cta-section p {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-lg);
+    color: var(--color-text-primary);
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #ff3c00, #ff6b35);
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    box-shadow: 0 15px 40px rgba(255, 60, 0, 0.3);
+    transition: all var(--transition-base);
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 50px rgba(255, 60, 0, 0.4);
+    color: #fff;
+  }
+</style>

@@ -11,18 +11,27 @@
     "deploy:staging": "astro build && wrangler deploy --env staging",
     "deploy:dev": "astro build && wrangler deploy --env dev",
     "types": "wrangler types",
-    "check": "astro check && svelte-check --tsconfig ./tsconfig.json"
+    "check": "astro check && svelte-check --tsconfig ./tsconfig.json",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
   },
   "dependencies": {
-    "astro": "^5.7.10",
+    "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^12.6.0",
     "@astrojs/svelte": "^7.0.9",
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/tailwind": "^5.1.4",
+    "astro": "^5.7.10",
+    "daisyui": "^4.12.14",
     "svelte": "^5.28.2",
-    "svelte-check": "^4.2.1"
+    "svelte-check": "^4.2.1",
+    "tailwindcss": "^3.4.17",
+    "prettier": "^3.0.0",
+    "prettier-plugin-astro": "^0.14.0",
+    "prettier-plugin-tailwindcss": "^0.6.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250124.0",
+    "@types/node": "^25.2.0",
     "typescript": "^5.7.3",
     "wrangler": "^4.0.0"
   }

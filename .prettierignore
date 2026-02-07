@@ -1,0 +1,9 @@
+node_modules
+dist
+.astro
+.cache
+.vercel
+.cloudflare
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
