@@ -235,7 +235,6 @@ import { tickerItems } from '@lib/const';
             </p>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -243,17 +242,17 @@ import { tickerItems } from '@lib/const';
     <section class="mt-12 md:mt-16 w-full" data-reveal="fade-up">
       <div class="stats stats-vertical md:stats-horizontal w-full bg-bg-secondary rounded-3xl px-6 md:px-12 py-6">
         <div class="stat place-items-center md:-translate-x-2">
-          <div class="stat-value font-mono text-2xl md:text-3xl font-bold text-text-primary">100+</div>
+          <div class="stat-value font-mono text-2xl md:text-3xl font-bold text-text-primary" data-counter="100" data-suffix="+">0</div>
           <div class="stat-desc text-xs uppercase tracking-wider text-text-muted">Car Brands</div>
         </div>
 
         <div class="stat place-items-center">
-          <div class="stat-value font-mono text-2xl md:text-3xl font-bold text-text-primary">5</div>
+          <div class="stat-value font-mono text-2xl md:text-3xl font-bold text-text-primary" data-counter="5">0</div>
           <div class="stat-desc text-xs uppercase tracking-wider text-text-muted">Difficulty Levels</div>
         </div>
 
         <div class="stat place-items-center">
-          <div class="stat-value font-mono text-2xl md:text-3xl font-bold text-text-primary">18</div>
+          <div class="stat-value font-mono text-2xl md:text-3xl font-bold text-text-primary" data-counter="18">0</div>
           <div class="stat-desc text-xs uppercase tracking-wider text-text-muted">Different Countries</div>
         </div>
       </div>
@@ -680,4 +679,37 @@ import { tickerItems } from '@lib/const';
       glowEl.style.filter = 'blur(18px)';
     });
   }
+
+  // Counter animation on scroll
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target as HTMLElement;
+        const finalValue = parseInt(target.dataset.counter || '0');
+        const suffix = target.dataset.suffix || '';
+        animateCounter(target, 0, finalValue, 1500, suffix);
+        counterObserver.unobserve(target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  function animateCounter(el: HTMLElement, start: number, end: number, duration: number, suffix: string = '') {
+    const startTime = performance.now();
+    const update = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.floor(start + (end - start) * easeOutCubic(progress));
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  }
+
+  function easeOutCubic(t: number) { 
+    return 1 - Math.pow(1 - t, 3); 
+  }
+
+  // Observe all counters
+  document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
+
 </script>
