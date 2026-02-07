@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="accent1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff6b35"/>
+      <stop offset="55%" stop-color="#ff3c00"/>
+      <stop offset="100%" stop-color="#cc2200"/>
+    </linearGradient>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#181818"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="needle1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff3c00"/>
+      <stop offset="100%" stop-color="#ff6b35"/>
+    </linearGradient>
+    <filter id="glow1">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="needleGlow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#bg1)" stroke="url(#accent1)" stroke-width="4"/>
+  
+  <!-- Inner ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+  <!-- Gauge arc - background track -->
+  <path d="M 100 360 A 196 196 0 1 1 412 360" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18" stroke-linecap="round"/>
+  
+  <!-- Gauge arc - red zone (last 30%) -->
+  <path d="M 340 98 A 196 196 0 0 1 412 360" fill="none" stroke="url(#accent1)" stroke-width="18" stroke-linecap="round" opacity="0.3"/>
+
+  <!-- Major tick marks around the gauge -->
+  <g stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round">
+    <!-- From ~220° to ~-40° (left to right) -->
+    <line x1="115" y1="370" x2="130" y2="355"/>
+    <line x1="82"  y1="290" x2="102" y2="290"/>
+    <line x1="96"  y1="200" x2="114" y2="208"/>
+    <line x1="152" y1="128" x2="166" y2="142"/>
+    <line x1="236" y1="82"  x2="240" y2="102"/>
+  </g>
+  <!-- Red zone ticks -->
+  <g stroke="url(#accent1)" stroke-width="3" stroke-linecap="round" filter="url(#glow1)">
+    <line x1="330" y1="90"  x2="322" y2="108"/>
+    <line x1="400" y1="145" x2="386" y2="158"/>
+    <line x1="430" y1="230" x2="410" y2="234"/>
+    <line x1="416" y1="318" x2="400" y2="310"/>
+  </g>
+
+  <!-- Minor tick marks -->
+  <g stroke="rgba(255,255,255,0.15)" stroke-width="1.5" stroke-linecap="round">
+    <line x1="95"  y1="340" x2="108" y2="330"/>
+    <line x1="78"  y1="246" x2="98"  y2="248"/>
+    <line x1="120" y1="162" x2="136" y2="172"/>
+    <line x1="192" y1="98"  x2="198" y2="118"/>
+    <line x1="284" y1="82"  x2="282" y2="102"/>
+  </g>
+
+  <!-- Needle - pointing to redline area -->
+  <g filter="url(#needleGlow)" transform="rotate(52, 256, 256)">
+    <polygon points="256,80 248,256 264,256" fill="url(#needle1)"/>
+    <!-- Needle cap -->
+    <circle cx="256" cy="256" r="16" fill="#1a1a1a" stroke="url(#accent1)" stroke-width="3"/>
+  </g>
+
+  <!-- Center question mark -->
+  <text x="256" y="358" 
+        text-anchor="middle" 
+        font-family="'Outfit','Helvetica Neue',sans-serif" 
+        font-weight="800" 
+        font-size="80" 
+        fill="url(#accent1)"
+        filter="url(#glow1)"
+        opacity="0.9">?</text>
+
+  <!-- Outer accent ring - thin -->
+  <circle cx="256" cy="256" r="248" fill="none" stroke="url(#accent1)" stroke-width="1" opacity="0.3"/>
+</svg>

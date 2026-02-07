@@ -19,11 +19,9 @@ const { showBackLink = false } = Astro.props;
       <>
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2 no-underline group">
-          <div class="w-10 h-10 md:w-10 md:h-10 bg-gradient-accent rounded-full flex items-center justify-center text-lg md:text-lg shrink-0">
-            🏎️
-          </div>
-          <span class="text-base md:text-2xl font-bold tracking-widest text-text-primary">
-            CARLOGO<span class="text-accent-primary">QUIZ</span>
+          <img src="/images/logo.svg" alt="CarLogoQuiz" class="w-10 h-10 shrink-0 rounded-full" />
+          <span class="text-base md:text-2xl font-extrabold uppercase tracking-tight text-text-primary transition-colors duration-300 group-hover:text-accent-primary">
+            Car<span class="text-gradient-accent">Logo</span>Quiz
           </span>
         </a>
         
