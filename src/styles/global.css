@@ -160,6 +160,8 @@
     visibility: visible;
     position: relative;
     z-index: 1;
+    /* Smooth transitions */
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
 
   .btn-glow:hover {
@@ -172,9 +174,16 @@
   /* Active state for touch */
   .btn-glow:active {
     box-shadow: 0 0 50px rgba(255, 60, 0, 0.6);
-    transform: translateY(-0.125rem) translateZ(0);
+    transform: translateY(-0.125rem) scale(0.98) translateZ(0);
     opacity: 1;
     visibility: visible;
+  }
+
+  /* Instant press feedback - triggered by JS */
+  .btn-glow.btn-pressing {
+    transform: translateY(-0.125rem) scale(0.98) translateZ(0);
+    box-shadow: 0 0 50px rgba(255, 60, 0, 0.6);
+    transition: transform 0.05s ease, box-shadow 0.05s ease;
   }
 
   /* Card with subtle border */
@@ -203,6 +212,14 @@
     -webkit-tap-highlight-color: transparent;
     /* Ensure minimum touch target size */
     min-height: 44px;
+    /* Smooth transitions */
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /* Instant press feedback for cards */
+  .card-interactive.touching {
+    transform: scale(0.98);
+    transition: transform 0.05s ease;
   }
 
   /* Badge pulse animation */
@@ -415,7 +432,6 @@ html::-webkit-scrollbar {
   /* Optimize image rendering */
   img {
     image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
   }
 }
 
