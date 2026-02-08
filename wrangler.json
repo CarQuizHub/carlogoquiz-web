@@ -9,10 +9,10 @@
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist",
-    "not_found_handling": "404-page",
+    "not_found_handling": "404-page"
   },
   "observability": {
-    "enabled": true,
+    "enabled": true
   },
   "routes": [
     { "pattern": "carlogoquiz.com", "custom_domain": true },
@@ -22,16 +22,14 @@
     "dev": {
       "name": "carlogoquiz-web-dev",
       "workers_dev": false,
-      "routes": [
-        { "pattern": "dev.carlogoquiz.com", "custom_domain": true }
-      ],
+      "routes": [{ "pattern": "dev.carlogoquiz.com", "custom_domain": true }]
     },
     "staging": {
       "name": "carlogoquiz-web-staging",
       "workers_dev": false,
       "routes": [
         { "pattern": "staging.carlogoquiz.com", "custom_domain": true }
-      ],
-    },
-  },
+      ]
+    }
+  }
 }
