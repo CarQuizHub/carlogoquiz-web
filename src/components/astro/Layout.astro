@@ -8,13 +8,14 @@ interface Props {
 
 const {
   title,
-  description = "Test your knowledge of car brand logos! Can you identify 15 car logos and prove you're a true automotive enthusiast?"
+  description = "Test your knowledge of car brand logos! Can you identify 15 car logos and prove you're a true automotive enthusiast?",
 } = Astro.props;
 
-const fullTitle = title === "Home" ? "Car Logo Quiz" : `${title} | Car Logo Quiz`;
+const fullTitle =
+  title === "Home" ? "Car Logo Quiz" : `${title} | Car Logo Quiz`;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="carlogoquiz">
   <head>
     <meta charset="UTF-8" />
@@ -42,7 +43,7 @@ const fullTitle = title === "Home" ? "Car Logo Quiz" : `${title} | Car Logo Quiz
     <title>{fullTitle}</title>
   </head>
   <body class="scrollbar-custom">
-    <div class="min-h-screen flex flex-col">
+    <div class="flex min-h-screen flex-col">
       <slot />
     </div>
   </body>

@@ -6,28 +6,27 @@
   "compatibility_flags": ["nodejs_compat"],
   "account_id": "635c7b208e581906817cd6e7b0b69617",
 
-
   // Static assets configuration
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
   },
 
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
 
   // Development environment
   "env": {
     "dev": {
-      "name": "carlogoquiz-web-dev"
+      "name": "carlogoquiz-web-dev",
     },
 
     // Staging environment
     "staging": {
       "name": "carlogoquiz-web-staging",
-      "workers_dev": true
-    }
-  }
+      "workers_dev": true,
+    },
+  },
 }
