@@ -9,8 +9,8 @@ import { tickerItems } from '@lib/const';
 <Layout title="Home">
   <Header />
   <div id="hero-glow" class="fixed inset-0 pointer-events-none z-[-1] transition-opacity duration-300" aria-hidden="true"></div>
-  <main class="flex-1 flex flex-col items-center px-4 pb-8 md:pb-12 max-w-4xl mx-auto pt-[6rem]">
-    <section class="text-center py-8 md:py-16">
+  <main class="flex-1 flex flex-col items-center px-4 pb-8 md:pb-12 max-w-4xl mx-auto hero-pt">
+    <section class="text-center hero-py">
 
       <!-- Title -->
       <h1 class="mb-6 leading-none hero-seq hero-title" data-hero="1">
@@ -25,7 +25,7 @@ import { tickerItems } from '@lib/const';
       <div class="w-84 h-px mx-auto mb-6 bg-gradient-to-r from-transparent via-accent-primary/50 to-transparent hero-seq" data-hero="2"></div>
       
       <!-- Description -->
-      <p class="text-lg max-w-md mx-auto mb-[5.5rem] hero-seq" data-hero="3">
+      <p class="text-lg max-w-md mx-auto hero-desc-mb hero-seq" data-hero="3">
         TEST YOUR AUTOMOTIVE KNOWLEDGE
       </p>
 
@@ -63,12 +63,12 @@ import { tickerItems } from '@lib/const';
     </section>
 
     <!-- Ticker -->
-    <div class="w-[calc(100%+18rem)] max-w-[100vw] mt-[3.5rem] -mx-14 hero-seq" data-hero="7">
+    <div class="w-[calc(100%+4rem)] lg:w-[calc(100%+12rem)] xl:w-[calc(100%+18rem)] max-w-[100vw] hero-ticker-mt -mx-4 lg:-mx-10 xl:-mx-14 hero-seq" data-hero="7">
       <LogoTicker items={tickerItems} speedSeconds={48} sizePx={60} title="FEATURES ICONIC CAR BRANDS FROM AROUND THE WORLD" />
     </div>
 
     <!-- Scroll indicator -->
-    <div class="mt-[3rem] flex flex-col items-center gap-2 hero-seq" data-hero="8" data-scroll-indicator>
+    <div class="hero-scroll-mt flex flex-col items-center gap-2 hero-seq" data-hero="8" data-scroll-indicator>
       <div class="transition-opacity duration-500" data-scroll-hint>
         <div class="flex flex-col items-center gap-2">
           <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-text-muted/70">Scroll</span>
@@ -560,6 +560,32 @@ import { tickerItems } from '@lib/const';
 </Layout>
 
 <style is:global>
+  /* ── Viewport-height-responsive hero spacing ── */
+  /* Tuned for 1080p (1920×1080) as the primary target */
+  /* At 1080px vh: 6vh≈65px, 5vh≈54px, 4vh≈43px, 3vh≈32px */
+  .hero-pt {
+    padding-top: clamp(4.5rem, 7vh, 6rem);
+  }
+  .hero-py {
+    padding-top: clamp(1.5rem, 3vh, 2rem);
+    padding-bottom: clamp(1.5rem, 3vh, 2rem);
+  }
+  @media (min-width: 768px) {
+    .hero-py {
+      padding-top: clamp(2.5rem, 5vh, 4rem);
+      padding-bottom: clamp(2.5rem, 5vh, 4rem);
+    }
+  }
+  .hero-desc-mb {
+    margin-bottom: clamp(3.5rem, 7vh, 5.5rem);
+  }
+  .hero-ticker-mt {
+    margin-top: clamp(2rem, 4vh, 3.5rem);
+  }
+  .hero-scroll-mt {
+    margin-top: clamp(1.5rem, 3vh, 3rem);
+  }
+
     .text-shadow-glow {
     text-shadow: 
       0 0 10px rgba(255, 60, 0, 0.8),
