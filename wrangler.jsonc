@@ -4,59 +4,29 @@
   "main": "dist/_worker.js/index.js",
   "compatibility_date": "2025-01-29",
   "compatibility_flags": ["nodejs_compat"],
+  "account_id": "635c7b208e581906817cd6e7b0b69617",
 
   // Static assets configuration
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist",
-    "not_found_handling": "404-page"
-  },
-
-  // Service binding to your BE worker
-  "services": [
-    {
-      "binding": "QUIZ_API",
-      "service": "carlogoquiz-api"
-    }
-  ],
-
-  // Production environment variables
-  "vars": {
-    "MEDIA_BASE_URL": "https://your-production-r2-bucket-url"
+    "not_found_handling": "404-page",
   },
 
   "observability": {
-    "enabled": true
+    "enabled": true,
   },
 
   // Development environment
   "env": {
     "dev": {
       "name": "carlogoquiz-web-dev",
-      "services": [
-        {
-          "binding": "QUIZ_API",
-          "service": "carlogoquiz-api-dev"
-        }
-      ],
-      "vars": {
-        "MEDIA_BASE_URL": "http://localhost:8787"
-      }
     },
 
     // Staging environment
     "staging": {
       "name": "carlogoquiz-web-staging",
       "workers_dev": true,
-      "services": [
-        {
-          "binding": "QUIZ_API",
-          "service": "carlogoquiz-api-staging"
-        }
-      ],
-      "vars": {
-        "MEDIA_BASE_URL": "https://your-staging-r2-bucket-url"
-      }
-    }
-  }
+    },
+  },
 }

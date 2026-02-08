@@ -1,7 +1,7 @@
 ---
-import Layout from '@components/astro/Layout.astro';
-import Header from '@components/astro/Header.astro';
-import Footer from '@components/astro/Footer.astro';
+import Layout from "@components/astro/Layout.astro";
+import Header from "@components/astro/Header.astro";
+import Footer from "@components/astro/Footer.astro";
 
 const email = "carlogoquizteam@gmail.com";
 const githubOrg = "CarQuizHub";
@@ -46,7 +46,7 @@ const sections = [
       <p class="mt-4 text-xs text-text-muted/70">
         Tip: Include your device/browser and what you were doing when the issue happened — it helps a lot.
       </p>
-    `
+    `,
   },
   {
     title: "Found a bug? Open a GitHub issue",
@@ -99,7 +99,7 @@ const sections = [
       <p class="mt-4 text-xs text-text-muted/70">
         Please include steps to reproduce, expected vs actual behavior, and screenshots if possible.
       </p>
-    `
+    `,
   },
   {
     title: "Suggestions, improvements, and new car brands",
@@ -133,7 +133,7 @@ const sections = [
       <p class="mt-4 text-sm text-text-secondary leading-relaxed">
         You can email us, or open an issue on GitHub (feature request).
       </p>
-    `
+    `,
   },
   {
     title: "Our repositories",
@@ -184,65 +184,112 @@ const sections = [
       <p class="mt-4 text-xs text-text-muted/70">
         If you’d rather not use GitHub, email is always welcome.
       </p>
-    `
-  }
+    `,
+  },
 ];
 ---
 
-<Layout title="Contact" description="Contact the CarLogoQuiz team and share feedback, issues, and suggestions">
-  <Header/>
-  <div id="hero-glow" class="fixed inset-0 pointer-events-none z-[-1] transition-opacity duration-300" aria-hidden="true"></div>
+<Layout
+  title="Contact"
+  description="Contact the CarLogoQuiz team and share feedback, issues, and suggestions"
+>
+  <Header />
+  <div
+    id="hero-glow"
+    class="pointer-events-none fixed inset-0 z-[-1] transition-opacity duration-300"
+    aria-hidden="true"
+  >
+  </div>
 
-  <main class="flex-1 flex flex-col items-center px-4 pb-10 md:pb-14 max-w-3xl mx-auto pt-[7rem] relative">
-
+  <main
+    class="relative mx-auto flex max-w-3xl flex-1 flex-col items-center px-4 pb-10 pt-[7rem] md:pb-14"
+  >
     <!-- Page Header -->
-    <section class="text-center mb-12 md:mb-16 w-full relative z-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-primary/20 bg-accent-primary/5 mb-5 p-entrance" style="animation-delay: 0.1s;">
+    <section class="relative z-10 mb-12 w-full text-center md:mb-16">
+      <div
+        class="p-entrance mb-5 inline-flex items-center gap-2 rounded-full border border-accent-primary/20 bg-accent-primary/5 px-4 py-1.5"
+        style="animation-delay: 0.1s;"
+      >
         <span class="relative flex h-2 w-2">
-          <span class="absolute inline-flex h-full w-full rounded-full bg-accent-primary opacity-75 animate-ping"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-accent-primary"></span>
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-primary opacity-75"
+          ></span>
+          <span
+            class="relative inline-flex h-2 w-2 rounded-full bg-accent-primary"
+          ></span>
         </span>
-        <span class="text-[10px] font-mono uppercase tracking-widest text-accent-primary">Contact</span>
+        <span
+          class="font-mono text-[10px] uppercase tracking-widest text-accent-primary"
+          >Contact</span
+        >
       </div>
 
-      <h1 class="text-4xl md:text-5xl font-extrabold uppercase tracking-tight mb-4 p-entrance" style="animation-delay: 0.2s;">
+      <h1
+        class="p-entrance mb-4 text-4xl font-extrabold uppercase tracking-tight md:text-5xl"
+        style="animation-delay: 0.2s;"
+      >
         Get in <span class="text-gradient-accent">Touch</span>
       </h1>
 
-      <p class="text-sm text-text-muted max-w-md mx-auto p-entrance" style="animation-delay: 0.35s;">
+      <p
+        class="p-entrance mx-auto max-w-md text-sm text-text-muted"
+        style="animation-delay: 0.35s;"
+      >
         Feedback, bugs, feature ideas, or new brands — we’d love to hear it.
       </p>
 
-      <div class="w-48 h-px mx-auto mt-5 bg-gradient-to-r from-transparent via-accent-primary/40 to-transparent p-entrance" style="animation-delay: 0.45s;"></div>
+      <div
+        class="p-entrance mx-auto mt-5 h-px w-48 bg-gradient-to-r from-transparent via-accent-primary/40 to-transparent"
+        style="animation-delay: 0.45s;"
+      >
+      </div>
     </section>
 
     <!-- Quick highlights
          ✅ Mobile (1 col): order is source order → Email first
          ✅ Desktop (md grid-cols-3): force positions via col-start → Email is center (2nd column)
     -->
-    <section class="w-full grid grid-cols-1 md:grid-cols-3 gap-4 mb-14 md:mb-16 relative z-10">
+    <section
+      class="relative z-10 mb-14 grid w-full grid-cols-1 gap-4 md:mb-16 md:grid-cols-3"
+    >
       <!-- Email (center on desktop) -->
       <div
-        class="card card-custom card-interactive group p-5 text-center p-entrance
-               md:col-start-2 md:row-start-1
-               transition-all duration-500
-               hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] hover:-translate-y-1
-               active:-translate-y-1"
+        class="card-custom card-interactive p-entrance group card p-5 text-center transition-all duration-500 hover:-translate-y-1 hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] active:-translate-y-1 md:col-start-2 md:row-start-1"
         style="animation-delay: 0.55s;"
       >
-        <div class="relative w-10 h-10 mx-auto mb-3">
-          <div class="absolute inset-0 bg-accent-primary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative z-10 w-10 h-10 rounded-xl bg-bg-tertiary flex items-center justify-center text-accent-primary/70
-                      transition-all duration-500 group-hover:bg-accent-primary/10 group-hover:text-accent-primary group-hover:-translate-y-0.5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              <path d="M8 10h8"/><path d="M8 14h5"/>
+        <div class="relative mx-auto mb-3 h-10 w-10">
+          <div
+            class="absolute inset-0 rounded-xl bg-accent-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100"
+          >
+          </div>
+          <div
+            class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary/70 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-accent-primary/10 group-hover:text-accent-primary"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+              ></path>
+              <path d="M8 10h8"></path><path d="M8 14h5"></path>
             </svg>
           </div>
         </div>
-        <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70">Email us</p>
-        <p class="text-sm mt-2">
-          <a href={links.email} class="text-text-primary hover:text-accent-primary transition-colors duration-300 break-all">
+        <p
+          class="font-mono text-xs uppercase tracking-widest text-text-muted/70"
+        >
+          Email us
+        </p>
+        <p class="mt-2 text-sm">
+          <a
+            href={links.email}
+            class="break-all text-text-primary transition-colors duration-300 hover:text-accent-primary"
+          >
             {email}
           </a>
         </p>
@@ -253,25 +300,40 @@ const sections = [
         href={links.webIssues}
         target="_blank"
         rel="noopener noreferrer"
-        class="card card-custom card-interactive group p-5 text-center p-entrance
-               md:col-start-1 md:row-start-1
-               transition-all duration-500
-               hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] hover:-translate-y-1
-               active:-translate-y-1"
+        class="card-custom card-interactive p-entrance group card p-5 text-center transition-all duration-500 hover:-translate-y-1 hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] active:-translate-y-1 md:col-start-1 md:row-start-1"
         style="animation-delay: 0.65s;"
       >
-        <div class="relative w-10 h-10 mx-auto mb-3">
-          <div class="absolute inset-0 bg-accent-primary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative z-10 w-10 h-10 rounded-xl bg-bg-tertiary flex items-center justify-center text-accent-primary/70
-                      transition-all duration-500 group-hover:bg-accent-primary/10 group-hover:text-accent-primary group-hover:-translate-y-0.5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 12h6"/><path d="M12 9v6"/>
-              <path d="M7 3h10l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/>
+        <div class="relative mx-auto mb-3 h-10 w-10">
+          <div
+            class="absolute inset-0 rounded-xl bg-accent-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100"
+          >
+          </div>
+          <div
+            class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary/70 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-accent-primary/10 group-hover:text-accent-primary"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M9 12h6"></path><path d="M12 9v6"></path>
+              <path
+                d="M7 3h10l4 4v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"
+              ></path>
             </svg>
           </div>
         </div>
-        <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70">Report a bug</p>
-        <p class="text-sm text-text-secondary mt-2">Open a GitHub issue (frontend).</p>
+        <p
+          class="font-mono text-xs uppercase tracking-widest text-text-muted/70"
+        >
+          Report a bug
+        </p>
+        <p class="mt-2 text-sm text-text-secondary">
+          Open a GitHub issue (frontend).
+        </p>
       </a>
 
       <!-- Suggest (right on desktop) -->
@@ -279,94 +341,139 @@ const sections = [
         href={links.org}
         target="_blank"
         rel="noopener noreferrer"
-        class="card card-custom card-interactive group p-5 text-center p-entrance
-               md:col-start-3 md:row-start-1
-               transition-all duration-500
-               hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] hover:-translate-y-1
-               active:-translate-y-1"
+        class="card-custom card-interactive p-entrance group card p-5 text-center transition-all duration-500 hover:-translate-y-1 hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] active:-translate-y-1 md:col-start-3 md:row-start-1"
         style="animation-delay: 0.75s;"
       >
-        <div class="relative w-10 h-10 mx-auto mb-3">
-          <div class="absolute inset-0 bg-accent-primary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative z-10 w-10 h-10 rounded-xl bg-bg-tertiary flex items-center justify-center text-accent-primary/70
-                      transition-all duration-500 group-hover:bg-accent-primary/10 group-hover:text-accent-primary group-hover:-translate-y-0.5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        <div class="relative mx-auto mb-3 h-10 w-10">
+          <div
+            class="absolute inset-0 rounded-xl bg-accent-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100"
+          >
+          </div>
+          <div
+            class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary/70 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-accent-primary/10 group-hover:text-accent-primary"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+              ></path>
             </svg>
           </div>
         </div>
-        <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70">Suggest ideas</p>
-        <p class="text-sm text-text-secondary mt-2">Features, brands, improvements.</p>
+        <p
+          class="font-mono text-xs uppercase tracking-widest text-text-muted/70"
+        >
+          Suggest ideas
+        </p>
+        <p class="mt-2 text-sm text-text-secondary">
+          Features, brands, improvements.
+        </p>
       </a>
     </section>
 
     <!-- Accordion -->
-    <section class="w-full space-y-3 relative z-10" id="contact-list">
-      {sections.map((s, index) => (
-        <div
-          class="collapse collapse-arrow bg-bg-card border border-white/5 rounded-2xl c-item group/contact transition-[border-color,box-shadow] duration-500
-                 hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)] p-entrance"
-          style={`animation-delay: ${0.85 + index * 0.1}s;`}
-        >
-          <input type="checkbox" />
+    <section class="relative z-10 w-full space-y-3" id="contact-list">
+      {
+        sections.map((s, index) => (
+          <div
+            class="c-item group/contact p-entrance collapse collapse-arrow rounded-2xl border border-white/5 bg-bg-card transition-[border-color,box-shadow] duration-500 hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)]"
+            style={`animation-delay: ${0.85 + index * 0.1}s;`}
+          >
+            <input type="checkbox" />
 
-          <div class="collapse-title pr-12 py-5 md:py-6 flex items-center gap-4 cursor-pointer">
-            <div class="w-10 h-10 shrink-0 rounded-xl bg-bg-tertiary flex items-center justify-center text-accent-primary/60
-                        transition-[border-color,box-shadow,transform,background-color,color] duration-500
-                        group-hover/contact:text-accent-primary group-hover/contact:bg-accent-primary/10 group-hover/contact:-translate-y-0.5">
-              <Fragment set:html={s.icon} />
+            <div class="collapse-title flex cursor-pointer items-center gap-4 py-5 pr-12 md:py-6">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary/60 transition-[border-color,box-shadow,transform,background-color,color] duration-500 group-hover/contact:-translate-y-0.5 group-hover/contact:bg-accent-primary/10 group-hover/contact:text-accent-primary">
+                <Fragment set:html={s.icon} />
+              </div>
+              <span class="text-sm font-semibold leading-snug text-text-primary transition-colors duration-300 group-hover/contact:text-accent-primary md:text-base">
+                {s.title}
+              </span>
             </div>
-            <span class="text-sm md:text-base font-semibold text-text-primary transition-colors duration-300 group-hover/contact:text-accent-primary leading-snug">
-              {s.title}
-            </span>
-          </div>
 
-          <div class="collapse-content px-6 pb-0">
-            <div class="pl-14 pb-6">
-              <div class="w-10 h-px bg-gradient-to-r from-accent-primary/30 to-transparent mb-4"></div>
-              <div class="text-sm text-text-secondary leading-relaxed contact-rich" set:html={s.body} />
+            <div class="collapse-content px-6 pb-0">
+              <div class="pb-6 pl-14">
+                <div class="mb-4 h-px w-10 bg-gradient-to-r from-accent-primary/30 to-transparent" />
+                <div
+                  class="contact-rich text-sm leading-relaxed text-text-secondary"
+                  set:html={s.body}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </section>
 
     <!-- CTA -->
-    <section class="mt-12 md:mt-16 mb-2 w-full p-entrance relative z-10" style="animation-delay: 1.45s;">
-      <div class="relative rounded-3xl border border-white/5 bg-bg-secondary overflow-hidden px-6 py-12 md:py-14 text-center">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,60,0,0.06)_0%,transparent_70%)] pointer-events-none"></div>
+    <section
+      class="p-entrance relative z-10 mb-2 mt-12 w-full md:mt-16"
+      style="animation-delay: 1.45s;"
+    >
+      <div
+        class="relative overflow-hidden rounded-3xl border border-white/5 bg-bg-secondary px-6 py-12 text-center md:py-14"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,60,0,0.06)_0%,transparent_70%)]"
+        >
+        </div>
 
         <div class="relative z-10 flex flex-col items-center gap-5">
-          <h2 class="text-2xl md:text-3xl font-extrabold uppercase tracking-tight leading-tight">
+          <h2
+            class="text-2xl font-extrabold uppercase leading-tight tracking-tight md:text-3xl"
+          >
             Want to help <span class="text-gradient-accent">shape</span> the quiz?
           </h2>
 
-          <p class="text-sm text-text-muted max-w-sm">
+          <p class="max-w-sm text-sm text-text-muted">
             Bugs, brands, feature ideas — send them our way.
           </p>
 
-          <div class="w-48 h-px bg-gradient-to-r from-transparent via-accent-primary/30 to-transparent"></div>
+          <div
+            class="h-px w-48 bg-gradient-to-r from-transparent via-accent-primary/30 to-transparent"
+          >
+          </div>
 
-          <div class="flex flex-col sm:flex-row items-center gap-3">
-            <a href={links.email} class="btn btn-lg btn-glow gap-3 px-10 py-4 text-base rounded-xl group inline-flex items-center justify-center">
+          <div class="flex flex-col items-center gap-3 sm:flex-row">
+            <a
+              href={links.email}
+              class="btn-glow group btn btn-lg inline-flex items-center justify-center gap-3 rounded-xl px-10 py-4 text-base"
+            >
               <span>Email Us</span>
-              <span class="transition-transform duration-250 group-hover:translate-x-1 group-active:translate-x-1">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/>
+              <span
+                class="duration-250 transition-transform group-hover:translate-x-1 group-active:translate-x-1"
+              >
+                <svg
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M4 4h16v16H4z"></path><path d="m22 6-10 7L2 6"
+                  ></path>
                 </svg>
               </span>
             </a>
 
-            <a href={links.webIssues} target="_blank" rel="noopener noreferrer"
-               class="btn btn-lg bg-bg-tertiary border border-white/5 text-text-secondary text-sm font-mono uppercase tracking-widest
-                      hover:border-accent-primary/30 hover:text-accent-primary transition-[border-color,box-shadow] duration-300">
+            <a
+              href={links.webIssues}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-lg border border-white/5 bg-bg-tertiary font-mono text-sm uppercase tracking-widest text-text-secondary transition-[border-color,box-shadow] duration-300 hover:border-accent-primary/30 hover:text-accent-primary"
+            >
               Open an Issue
             </a>
           </div>
         </div>
       </div>
     </section>
-
   </main>
   <Footer />
 </Layout>
@@ -381,7 +488,11 @@ const sections = [
   }
 
   @keyframes pIn {
-    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
   }
 
   /* Accordion tweaks (same vibe as Privacy/FAQ) */
@@ -394,7 +505,9 @@ const sections = [
 
   .c-item .collapse-title::after {
     color: rgba(255, 255, 255, 0.2);
-    transition: color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      color 0.3s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .c-item:hover .collapse-title::after {
@@ -422,21 +535,37 @@ const sections = [
   }
 
   /* Rich content spacing */
-  .contact-rich p { margin-top: 0.6rem; }
-  .contact-rich p:first-child { margin-top: 0; }
+  .contact-rich p {
+    margin-top: 0.6rem;
+  }
+  .contact-rich p:first-child {
+    margin-top: 0;
+  }
 
   @media (prefers-reduced-motion: reduce) {
-    .p-entrance { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+    .p-entrance {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
   }
 </style>
 
 <script>
   // Fade hero glow like your other pages
-  const heroGlow = document.getElementById('hero-glow');
+  const heroGlow = document.getElementById("hero-glow");
   if (heroGlow) {
-    window.addEventListener('scroll', () => {
-      const fade = Math.max(0.25, 1 - window.scrollY / (window.innerHeight * 2.5));
-      heroGlow.style.opacity = String(fade);
-    }, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        const fade = Math.max(
+          0.25,
+          1 - window.scrollY / (window.innerHeight * 2.5),
+        );
+        heroGlow.style.opacity = String(fade);
+      },
+      { passive: true },
+    );
   }
 </script>

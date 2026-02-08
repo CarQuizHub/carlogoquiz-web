@@ -6,38 +6,59 @@ interface Props {
 const { showBackLink = false } = Astro.props;
 ---
 
-<header class="fixed top-0 left-0 right-0 px-4 md:px-8 py-4 bg-gradient-to-b from-black/80 to-transparent z-50">
-  <div class="w-full mx-auto flex justify-between items-center">
-    {showBackLink ? (
-      <a href="/" class="btn btn-ghost gap-2 text-text-secondary text-sm font-medium hover:text-accent-primary active:text-accent-primary px-0 min-h-[44px] inline-flex items-center touch-manipulation group">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform duration-150 group-hover:-translate-x-1 group-active:-translate-x-1">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        <span>Exit</span>
-      </a>
-    ) : (
-      <>
-        <!-- Logo (text only) -->
-        <a href="/" class="no-underline group min-h-[44px] inline-flex items-center touch-manipulation flex-shrink-0">
-          <span class="text-sm md:text-base lg:text-2xl font-extrabold uppercase tracking-tight text-text-primary transition-colors duration-300 group-hover:text-accent-primary group-active:text-accent-primary whitespace-nowrap">
-            Car<span class="text-gradient-accent">Logo</span>Quiz
-          </span>
+<header
+  class="fixed left-0 right-0 top-0 z-50 bg-gradient-to-b from-black/80 to-transparent px-4 py-4 md:px-8"
+>
+  <div class="mx-auto flex w-full items-center justify-between">
+    {
+      showBackLink ? (
+        <a
+          href="/"
+          class="group btn btn-ghost inline-flex min-h-[44px] touch-manipulation items-center gap-2 px-0 text-sm font-medium text-text-secondary hover:text-accent-primary active:text-accent-primary"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            class="transition-transform duration-150 group-hover:-translate-x-1 group-active:-translate-x-1"
+          >
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
+          <span>Exit</span>
         </a>
-        
-        <!-- Navigation -->
-        <nav class="flex items-center gap-2 md:gap-4 lg:gap-8 flex-shrink-0">
-          <a href="/about" class="text-xs md:text-sm font-medium tracking-widest uppercase text-text-secondary opacity-70 hover:opacity-100 active:opacity-100 hover:text-text-primary active:text-text-primary transition-opacity duration-150 min-h-[44px] inline-flex items-center touch-manipulation px-2 md:px-0">
-            About
+      ) : (
+        <>
+          <a
+            href="/"
+            class="group inline-flex min-h-[44px] flex-shrink-0 touch-manipulation items-center no-underline"
+          >
+            <span class="whitespace-nowrap text-sm font-extrabold uppercase tracking-tight text-text-primary transition-colors duration-300 group-hover:text-accent-primary group-active:text-accent-primary md:text-base lg:text-2xl">
+              Car<span class="text-gradient-accent">Logo</span>Quiz
+            </span>
           </a>
-          <a href="/faq" class="text-xs md:text-sm font-medium tracking-widest uppercase text-text-secondary opacity-70 hover:opacity-100 active:opacity-100 hover:text-text-primary active:text-text-primary transition-opacity duration-150 min-h-[44px] inline-flex items-center touch-manipulation px-2 md:px-0">
-            FAQ
-          </a>
-          <span class="btn btn-sm border border-[#ff3c00]/30 bg-[#ff3c00]/40 text-white/60 text-[10px] md:text-xs font-semibold tracking-widest uppercase backdrop-blur-xl shadow-[0_0_20px_rgba(255,60,0,0.15)] ring-1 ring-[#ff3c00]/25 cursor-default transition-all duration-300 active:scale-[0.97] active:bg-[#ff3c00]/55 min-h-[36px] min-w-[36px] inline-flex items-center justify-center touch-manipulation whitespace-nowrap px-2.5 md:px-3 select-none">
-            COMING SOON
-          </span>
-        </nav>
-      </>
-    )}
+          <nav class="flex flex-shrink-0 items-center gap-2 md:gap-4 lg:gap-8">
+            <a
+              href="/about"
+              class="inline-flex min-h-[44px] touch-manipulation items-center px-2 text-xs font-medium uppercase tracking-widest text-text-secondary opacity-70 transition-opacity duration-150 hover:text-text-primary hover:opacity-100 active:text-text-primary active:opacity-100 md:px-0 md:text-sm"
+            >
+              About
+            </a>
+            <a
+              href="/faq"
+              class="inline-flex min-h-[44px] touch-manipulation items-center px-2 text-xs font-medium uppercase tracking-widest text-text-secondary opacity-70 transition-opacity duration-150 hover:text-text-primary hover:opacity-100 active:text-text-primary active:opacity-100 md:px-0 md:text-sm"
+            >
+              FAQ
+            </a>
+            <span class="btn btn-sm inline-flex min-h-[36px] min-w-[36px] cursor-default touch-manipulation select-none items-center justify-center whitespace-nowrap border border-[#ff3c00]/30 bg-[#ff3c00]/40 px-2.5 text-[10px] font-semibold uppercase tracking-widest text-white/60 shadow-[0_0_20px_rgba(255,60,0,0.15)] ring-1 ring-[#ff3c00]/25 backdrop-blur-xl transition-all duration-300 active:scale-[0.97] active:bg-[#ff3c00]/55 md:px-3 md:text-xs">
+              COMING SOON
+            </span>
+          </nav>
+        </>
+      )
+    }
   </div>
 </header>
 
@@ -51,17 +72,22 @@ const { showBackLink = false } = Astro.props;
 
   .btn-header {
     position: relative;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   .btn-header.btn-pressing {
     transform: translateY(-0.125rem) scale(0.98);
     box-shadow: 0 0 20px rgba(255, 60, 0, 0.4);
-    transition: transform 0.05s ease, box-shadow 0.05s ease;
+    transition:
+      transform 0.05s ease,
+      box-shadow 0.05s ease;
   }
 
   @media (hover: none) and (pointer: coarse) {
-    a, button {
+    a,
+    button {
       min-height: 44px;
       min-width: 44px;
     }
@@ -111,15 +137,17 @@ const { showBackLink = false } = Astro.props;
 </style>
 
 <script>
-  document.querySelectorAll('.btn-header').forEach((button) => {
-    const addPressEffect = () => button.classList.add('btn-pressing');
-    const removePressEffect = () => button.classList.remove('btn-pressing');
+  document.querySelectorAll(".btn-header").forEach((button) => {
+    const addPressEffect = () => button.classList.add("btn-pressing");
+    const removePressEffect = () => button.classList.remove("btn-pressing");
 
-    button.addEventListener('mousedown', addPressEffect);
-    button.addEventListener('mouseup', removePressEffect);
-    button.addEventListener('mouseleave', removePressEffect);
-    button.addEventListener('touchstart', addPressEffect, { passive: true });
-    button.addEventListener('touchend', removePressEffect, { passive: true });
-    button.addEventListener('touchcancel', removePressEffect, { passive: true });
+    button.addEventListener("mousedown", addPressEffect);
+    button.addEventListener("mouseup", removePressEffect);
+    button.addEventListener("mouseleave", removePressEffect);
+    button.addEventListener("touchstart", addPressEffect, { passive: true });
+    button.addEventListener("touchend", removePressEffect, { passive: true });
+    button.addEventListener("touchcancel", removePressEffect, {
+      passive: true,
+    });
   });
 </script>

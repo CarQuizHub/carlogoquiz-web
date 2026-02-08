@@ -38,15 +38,15 @@ export interface AnswerRequest {
  * Error codes returned by the API
  */
 export enum SessionErrorCode {
-  NO_BRANDS_AVAILABLE = 'NO_BRANDS_AVAILABLE',
-  NO_QUESTIONS_AVAILABLE = 'NO_QUESTIONS_AVAILABLE',
-  NO_ACTIVE_SESSION = 'NO_ACTIVE_SESSION',
-  SESSION_NOT_FOUND = 'SESSION_NOT_FOUND',
-  GAME_OVER = 'GAME_OVER',
-  INVALID_INPUT_FORMAT = 'INVALID_INPUT_FORMAT',
-  INVALID_QUESTION_NUMBER = 'INVALID_QUESTION_NUMBER',
-  INVALID_SESSION_ID = 'INVALID_SESSION_ID',
-  INTERNAL_ERROR = 'INTERNAL_ERROR'
+  NO_BRANDS_AVAILABLE = "NO_BRANDS_AVAILABLE",
+  NO_QUESTIONS_AVAILABLE = "NO_QUESTIONS_AVAILABLE",
+  NO_ACTIVE_SESSION = "NO_ACTIVE_SESSION",
+  SESSION_NOT_FOUND = "SESSION_NOT_FOUND",
+  GAME_OVER = "GAME_OVER",
+  INVALID_INPUT_FORMAT = "INVALID_INPUT_FORMAT",
+  INVALID_QUESTION_NUMBER = "INVALID_QUESTION_NUMBER",
+  INVALID_SESSION_ID = "INVALID_SESSION_ID",
+  INTERNAL_ERROR = "INTERNAL_ERROR",
 }
 
 /**
@@ -117,7 +117,12 @@ export type EndSessionResult = Result<ApiEndSessionResponse>;
 /**
  * Quiz status states
  */
-export type QuizStatus = 'idle' | 'loading' | 'playing' | 'feedback' | 'gameover';
+export type QuizStatus =
+  | "idle"
+  | "loading"
+  | "playing"
+  | "feedback"
+  | "gameover";
 
 /**
  * Information about the last submitted answer
@@ -147,7 +152,7 @@ export interface QuizState {
  * Initial state for the quiz
  */
 export const initialQuizState: QuizState = {
-  status: 'idle',
+  status: "idle",
   sessionId: null,
   brands: [],
   questions: [],
@@ -155,5 +160,5 @@ export const initialQuizState: QuizState = {
   score: 0,
   lives: 3,
   lastAnswer: null,
-  error: null
+  error: null,
 };

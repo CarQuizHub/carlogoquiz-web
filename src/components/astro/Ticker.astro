@@ -11,12 +11,7 @@ interface Props {
   title?: string;
 }
 
-const {
-  items,
-  speedSeconds = 22,
-  sizePx = 28,
-  title
-} = Astro.props;
+const { items, speedSeconds = 22, sizePx = 28, title } = Astro.props;
 
 const loopItems = [...items, ...items, ...items];
 ---
@@ -27,33 +22,53 @@ const loopItems = [...items, ...items, ...items];
     style={`--ticker-duration:${speedSeconds}s; --logo-size:${sizePx}px;`}
     data-ticker
   >
-  <!-- Label inside the ticker -->
-  <div class="flex items-center gap-4 pt-4 pb-1 px-6 md:px-10 relative z-30">
-    <div class="flex-1 h-px bg-gradient-to-r from-transparent to-white/10"></div>
-    <span class="font-mono text-xs uppercase tracking-widest text-text-muted whitespace-normal text-center md:whitespace-nowrap">{title}
-    </span>
-    <div class="flex-1 h-px bg-gradient-to-l from-transparent to-white/10"></div>
-  </div>
+    <!-- Label inside the ticker -->
+    <div class="relative z-30 flex items-center gap-4 px-6 pb-1 pt-4 md:px-10">
+      <div class="h-px flex-1 bg-gradient-to-r from-transparent to-white/10">
+      </div>
+      <span
+        class="whitespace-normal text-center font-mono text-xs uppercase tracking-widest text-text-muted md:whitespace-nowrap"
+        >{title}
+      </span>
+      <div class="h-px flex-1 bg-gradient-to-l from-transparent to-white/10">
+      </div>
+    </div>
 
     <!-- Edge fades — layered for depth -->
-    <div class="pointer-events-none absolute inset-y-0 left-0 w-20 md:w-28 z-20 ticker-fade-left"></div>
-    <div class="pointer-events-none absolute inset-y-0 left-0 w-10 md:w-16 z-21 ticker-glow-left"></div>
+    <div
+      class="ticker-fade-left pointer-events-none absolute inset-y-0 left-0 z-20 w-20 md:w-28"
+    >
+    </div>
+    <div
+      class="z-21 ticker-glow-left pointer-events-none absolute inset-y-0 left-0 w-10 md:w-16"
+    >
+    </div>
 
-    <div class="pointer-events-none absolute inset-y-0 right-0 w-20 md:w-28 z-20 ticker-fade-right"></div>
-    <div class="pointer-events-none absolute inset-y-0 right-0 w-10 md:w-16 z-21 ticker-glow-right"></div>
+    <div
+      class="ticker-fade-right pointer-events-none absolute inset-y-0 right-0 z-20 w-20 md:w-28"
+    >
+    </div>
+    <div
+      class="z-21 ticker-glow-right pointer-events-none absolute inset-y-0 right-0 w-10 md:w-16"
+    >
+    </div>
 
-    <div class="ticker-track relative z-10 flex items-center gap-6 md:gap-8 py-4 px-4 md:px-6">
-      {loopItems.map((item) => (
-        <div class="ticker-item" data-ticker-item>
-          <img
-            src={item.src}
-            alt={item.alt}
-            loading="lazy"
-            class="ticker-logo select-none"
-            draggable="false"
-          />
-        </div>
-      ))}
+    <div
+      class="ticker-track relative z-10 flex items-center gap-6 px-4 py-4 md:gap-8 md:px-6"
+    >
+      {
+        loopItems.map((item) => (
+          <div class="ticker-item" data-ticker-item>
+            <img
+              src={item.src}
+              alt={item.alt}
+              loading="lazy"
+              class="ticker-logo select-none"
+              draggable="false"
+            />
+          </div>
+        ))
+      }
     </div>
   </div>
 </div>
@@ -72,7 +87,9 @@ const loopItems = [...items, ...items, ...items];
     padding: 1px;
     box-sizing: border-box;
     filter: grayscale(0.05);
-    transition: filter 0.3s ease, transform 0.3s ease;
+    transition:
+      filter 0.3s ease,
+      transform 0.3s ease;
     /* Prevent selection on touch */
     -webkit-user-select: none;
     user-select: none;
@@ -99,7 +116,8 @@ const loopItems = [...items, ...items, ...items];
   }
 
   .ticker.is-interacting .ticker-item.is-closest .ticker-logo {
-    filter: grayscale(0) brightness(1.1) drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+    filter: grayscale(0) brightness(1.1)
+      drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
     transform: scale(1.3);
   }
 
@@ -165,7 +183,9 @@ const loopItems = [...items, ...items, ...items];
   @media (hover: none) and (pointer: coarse) {
     /* Slightly faster transitions on mobile for responsiveness */
     .ticker-logo {
-      transition: filter 0.2s ease, transform 0.2s ease;
+      transition:
+        filter 0.2s ease,
+        transform 0.2s ease;
     }
 
     .ticker-item {
@@ -195,7 +215,7 @@ const loopItems = [...items, ...items, ...items];
     let isInteracting = false;
 
     const speedSeconds = parseFloat(
-      getComputedStyle(ticker).getPropertyValue("--ticker-duration")
+      getComputedStyle(ticker).getPropertyValue("--ticker-duration"),
     );
 
     function lerpRate() {
@@ -236,7 +256,7 @@ const loopItems = [...items, ...items, ...items];
           duration: speedSeconds * 1000,
           iterations: Infinity,
           easing: "linear",
-        }
+        },
       );
 
       currentRate = 1;
@@ -293,31 +313,47 @@ const loopItems = [...items, ...items, ...items];
     // Touch events (mobile/tablet)
     let touchActive = false;
 
-    ticker.addEventListener("touchstart", (e) => {
-      touchActive = true;
-      startInteraction();
-      const touch = e.touches[0];
-      if (touch) {
-        updateClosestItem(touch.clientX);
-      }
-    }, { passive: true });
+    ticker.addEventListener(
+      "touchstart",
+      (e) => {
+        touchActive = true;
+        startInteraction();
+        const touch = e.touches[0];
+        if (touch) {
+          updateClosestItem(touch.clientX);
+        }
+      },
+      { passive: true },
+    );
 
-    ticker.addEventListener("touchmove", (e) => {
-      if (!touchActive) return;
-      const touch = e.touches[0];
-      if (touch) {
-        updateClosestItem(touch.clientX);
-      }
-    }, { passive: true });
+    ticker.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!touchActive) return;
+        const touch = e.touches[0];
+        if (touch) {
+          updateClosestItem(touch.clientX);
+        }
+      },
+      { passive: true },
+    );
 
-    ticker.addEventListener("touchend", () => {
-      touchActive = false;
-      endInteraction();
-    }, { passive: true });
+    ticker.addEventListener(
+      "touchend",
+      () => {
+        touchActive = false;
+        endInteraction();
+      },
+      { passive: true },
+    );
 
-    ticker.addEventListener("touchcancel", () => {
-      touchActive = false;
-      endInteraction();
-    }, { passive: true });
+    ticker.addEventListener(
+      "touchcancel",
+      () => {
+        touchActive = false;
+        endInteraction();
+      },
+      { passive: true },
+    );
   });
 </script>
