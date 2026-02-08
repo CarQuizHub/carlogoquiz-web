@@ -17,9 +17,8 @@ const { showBackLink = false } = Astro.props;
       </a>
     ) : (
       <>
-        <!-- Logo -->
-        <a href="/" class="flex items-center gap-1.5 md:gap-2 no-underline group min-h-[44px] touch-manipulation flex-shrink-0">
-          <img src="/images/logo.svg" alt="CarLogoQuiz" class="w-8 h-8 md:w-10 md:h-10 shrink-0 rounded-full" />
+        <!-- Logo (text only) -->
+        <a href="/" class="no-underline group min-h-[44px] inline-flex items-center touch-manipulation flex-shrink-0">
           <span class="text-sm md:text-base lg:text-2xl font-extrabold uppercase tracking-tight text-text-primary transition-colors duration-300 group-hover:text-accent-primary group-active:text-accent-primary whitespace-nowrap">
             Car<span class="text-gradient-accent">Logo</span>Quiz
           </span>
@@ -43,7 +42,6 @@ const { showBackLink = false } = Astro.props;
 </header>
 
 <style>
-  /* Touch optimization */
   .touch-manipulation {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
@@ -51,7 +49,6 @@ const { showBackLink = false } = Astro.props;
     -webkit-user-select: none;
   }
 
-  /* Header button instant feedback */
   .btn-header {
     position: relative;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -63,20 +60,16 @@ const { showBackLink = false } = Astro.props;
     transition: transform 0.05s ease, box-shadow 0.05s ease;
   }
 
-  /* Mobile-specific optimizations */
   @media (hover: none) and (pointer: coarse) {
-    /* Ensure proper touch targets */
     a, button {
       min-height: 44px;
       min-width: 44px;
     }
 
-    /* Optimize tap highlighting */
     * {
       -webkit-tap-highlight-color: rgba(255, 60, 0, 0.1);
     }
 
-    /* Hardware acceleration */
     .btn-header {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
@@ -84,13 +77,11 @@ const { showBackLink = false } = Astro.props;
     }
   }
 
-  /* Prevent layout shift */
   header {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
 
-  /* Extra small screens (320px+) */
   @media (max-width: 375px) {
     header {
       padding-left: 0.75rem;
@@ -108,14 +99,11 @@ const { showBackLink = false } = Astro.props;
     }
   }
 
-  /* Small screens optimization */
   @media (max-width: 640px) {
-    /* Ensure logo text doesn't wrap awkwardly */
     header a[href="/"] span {
       font-size: clamp(0.75rem, 3.5vw, 1rem);
     }
 
-    /* Make sure everything fits comfortably */
     header .w-full {
       gap: 0.5rem;
     }
@@ -123,22 +111,13 @@ const { showBackLink = false } = Astro.props;
 </style>
 
 <script>
-  // Add instant press feedback to header button
   document.querySelectorAll('.btn-header').forEach((button) => {
-    const addPressEffect = () => {
-      button.classList.add('btn-pressing');
-    };
-    
-    const removePressEffect = () => {
-      button.classList.remove('btn-pressing');
-    };
+    const addPressEffect = () => button.classList.add('btn-pressing');
+    const removePressEffect = () => button.classList.remove('btn-pressing');
 
-    // Mouse events (desktop)
     button.addEventListener('mousedown', addPressEffect);
     button.addEventListener('mouseup', removePressEffect);
     button.addEventListener('mouseleave', removePressEffect);
-
-    // Touch events (mobile)
     button.addEventListener('touchstart', addPressEffect, { passive: true });
     button.addEventListener('touchend', removePressEffect, { passive: true });
     button.addEventListener('touchcancel', removePressEffect, { passive: true });
