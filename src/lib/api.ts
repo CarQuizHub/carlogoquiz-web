@@ -2,8 +2,8 @@ import type {
   StartSessionResult,
   RestoreSessionResult,
   SubmitAnswerResult,
-  EndSessionResult
-} from './types';
+  EndSessionResult,
+} from "./types";
 
 /**
  * API client for communicating with the quiz backend
@@ -16,11 +16,11 @@ class QuizApiClient {
    */
   private async post<T>(url: string, body?: object): Promise<T> {
     const response = await fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: body ? JSON.stringify(body) : undefined
+      body: body ? JSON.stringify(body) : undefined,
     });
 
     if (!response.ok) {
@@ -31,9 +31,9 @@ class QuizApiClient {
         return {
           success: false,
           error: {
-            code: 'NETWORK_ERROR',
-            message: `Request failed: ${response.status} ${response.statusText}`
-          }
+            code: "NETWORK_ERROR",
+            message: `Request failed: ${response.status} ${response.statusText}`,
+          },
         } as T;
       }
     }
@@ -46,7 +46,7 @@ class QuizApiClient {
    * @returns Session data including sessionId, brands, and questions
    */
   async startSession(): Promise<StartSessionResult> {
-    return this.post('/api/session/start');
+    return this.post("/api/session/start");
   }
 
   /**
@@ -55,7 +55,7 @@ class QuizApiClient {
    * @returns Session data if valid, error if expired/invalid
    */
   async restoreSession(sessionId: string): Promise<RestoreSessionResult> {
-    return this.post('/api/session/restore', { sessionId });
+    return this.post("/api/session/restore", { sessionId });
   }
 
   /**
@@ -70,13 +70,13 @@ class QuizApiClient {
     sessionId: string,
     questionNumber: number,
     brandId: number,
-    timeTaken: number | null = null
+    timeTaken: number | null = null,
   ): Promise<SubmitAnswerResult> {
-    return this.post('/api/quiz/answer', {
+    return this.post("/api/quiz/answer", {
       sessionId,
       questionNumber,
       brandId,
-      timeTaken
+      timeTaken,
     });
   }
 
@@ -86,7 +86,7 @@ class QuizApiClient {
    * @returns Confirmation message
    */
   async endSession(sessionId: string): Promise<EndSessionResult> {
-    return this.post('/api/session/end', { sessionId });
+    return this.post("/api/session/end", { sessionId });
   }
 }
 
@@ -99,7 +99,7 @@ export const quizApi = new QuizApiClient();
 // Session Storage Helpers
 // ============================================
 
-const SESSION_STORAGE_KEY = 'carlogoquiz_session';
+const SESSION_STORAGE_KEY = "carlogoquiz_session";
 
 /**
  * Save session ID to localStorage for restoration
@@ -109,7 +109,7 @@ export function saveSessionToStorage(sessionId: string): void {
     localStorage.setItem(SESSION_STORAGE_KEY, sessionId);
   } catch (e) {
     // localStorage may be unavailable (private browsing, etc.)
-    console.warn('Failed to save session to localStorage:', e);
+    console.warn("Failed to save session to localStorage:", e);
   }
 }
 
@@ -120,7 +120,7 @@ export function getSessionFromStorage(): string | null {
   try {
     return localStorage.getItem(SESSION_STORAGE_KEY);
   } catch (e) {
-    console.warn('Failed to get session from localStorage:', e);
+    console.warn("Failed to get session from localStorage:", e);
     return null;
   }
 }
@@ -132,6 +132,6 @@ export function clearSessionFromStorage(): void {
   try {
     localStorage.removeItem(SESSION_STORAGE_KEY);
   } catch (e) {
-    console.warn('Failed to clear session from localStorage:', e);
+    console.warn("Failed to clear session from localStorage:", e);
   }
 }

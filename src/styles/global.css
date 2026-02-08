@@ -21,7 +21,7 @@
   }
 
   body {
-    @apply font-display font-normal leading-relaxed text-text-primary min-h-screen overflow-x-hidden;
+    @apply min-h-screen overflow-x-hidden font-display font-normal leading-relaxed text-text-primary;
 
     /* KEY: create a stacking context so ::before/::after z-index works predictably */
     position: relative;
@@ -31,18 +31,53 @@
     -webkit-tap-highlight-color: transparent;
 
     /* Grey/dark gradient base — lightened */
-    background:
-      linear-gradient(180deg, #0e0e0e 0%, #0d0c0b 25%, #110e0c 50%, #120e0b 75%, #140f0b 100%);
+    background: linear-gradient(
+      180deg,
+      #0e0e0e 0%,
+      #0d0c0b 25%,
+      #110e0c 50%,
+      #120e0b 75%,
+      #140f0b 100%
+    );
   }
 
   #hero-glow {
-  background:
-    radial-gradient(ellipse 100% 45% at 50% 0%, rgba(255, 60, 0, 0.22), transparent 70%),
-    radial-gradient(ellipse 50% 25% at 50% 0%, rgba(255, 80, 10, 0.14), transparent 60%),
-    radial-gradient(circle at 15% 10%, rgba(255, 107, 53, 0.07), transparent 50%),
-    radial-gradient(circle at 85% 10%, rgba(255, 107, 53, 0.07), transparent 50%),
-    radial-gradient(ellipse 120% 100% at 50% 100%, rgba(40, 12, 8, 0.6), rgba(40, 12, 8, 0.4) 40%, rgba(40, 12, 8, 0.2) 60%, rgba(40, 12, 8, 0.05) 80%, transparent 100%),
-    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(60, 15, 10, 0.3), rgba(60, 15, 10, 0.15) 40%, rgba(60, 15, 10, 0.05) 70%, transparent 100%);
+    background:
+      radial-gradient(
+        ellipse 100% 45% at 50% 0%,
+        rgba(255, 60, 0, 0.22),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 50% 25% at 50% 0%,
+        rgba(255, 80, 10, 0.14),
+        transparent 60%
+      ),
+      radial-gradient(
+        circle at 15% 10%,
+        rgba(255, 107, 53, 0.07),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 85% 10%,
+        rgba(255, 107, 53, 0.07),
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 120% 100% at 50% 100%,
+        rgba(40, 12, 8, 0.6),
+        rgba(40, 12, 8, 0.4) 40%,
+        rgba(40, 12, 8, 0.2) 60%,
+        rgba(40, 12, 8, 0.05) 80%,
+        transparent 100%
+      ),
+      radial-gradient(
+        ellipse 100% 80% at 50% 100%,
+        rgba(60, 15, 10, 0.3),
+        rgba(60, 15, 10, 0.15) 40%,
+        rgba(60, 15, 10, 0.05) 70%,
+        transparent 100%
+      );
   }
 
   /* Grid overlay — more visible */
@@ -93,7 +128,7 @@
   }
 
   h1 {
-    @apply text-5xl md:text-6xl lg:text-7xl font-extrabold;
+    @apply text-5xl font-extrabold md:text-6xl lg:text-7xl;
     letter-spacing: -0.02em;
     line-height: 0.95;
   }
@@ -146,7 +181,7 @@
 
   /* Glow button style */
   .btn-glow {
-    @apply bg-gradient-accent text-bg-primary font-display font-bold uppercase tracking-wider;
+    @apply bg-gradient-accent font-display font-bold uppercase tracking-wider text-bg-primary;
     box-shadow:
       0 20px 60px rgba(255, 60, 0, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -160,7 +195,9 @@
     position: relative;
     z-index: 1;
     /* Smooth transitions */
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   .btn-glow:hover {
@@ -182,12 +219,14 @@
   .btn-glow.btn-pressing {
     transform: translateY(-0.125rem) scale(0.98) translateZ(0);
     box-shadow: 0 0 50px rgba(255, 60, 0, 0.6);
-    transition: transform 0.05s ease, box-shadow 0.05s ease;
+    transition:
+      transform 0.05s ease,
+      box-shadow 0.05s ease;
   }
 
   /* Card with subtle border */
   .card-custom {
-    @apply bg-bg-card border border-white/5 rounded-2xl transition-colors duration-250;
+    @apply duration-250 rounded-2xl border border-white/5 bg-bg-card transition-colors;
     /* Enable hardware acceleration */
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
@@ -212,7 +251,10 @@
     /* Ensure minimum touch target size */
     min-height: 44px;
     /* Smooth transitions */
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease;
   }
 
   /* Instant press feedback for cards */
@@ -223,7 +265,7 @@
 
   /* Badge pulse animation */
   .badge-dot {
-    @apply w-1.5 h-1.5 bg-accent-success rounded-full;
+    @apply h-1.5 w-1.5 rounded-full bg-accent-success;
     animation: pulse 2s ease-in-out infinite;
   }
 }
@@ -253,7 +295,7 @@
   }
 
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    @apply bg-bg-tertiary rounded-full;
+    @apply rounded-full bg-bg-tertiary;
   }
 
   .scrollbar-custom::-webkit-scrollbar-thumb:hover {
@@ -268,7 +310,7 @@
 
 /* Focus states */
 :focus-visible {
-  @apply outline-2 outline-accent-primary outline-offset-2;
+  @apply outline-2 outline-offset-2 outline-accent-primary;
 }
 
 /* Global scrollbar */

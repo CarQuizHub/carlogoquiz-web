@@ -1,7 +1,7 @@
 ---
-import Layout from '@components/astro/Layout.astro';
-import Header from '@components/astro/Header.astro';
-import Footer from '@components/astro/Footer.astro';
+import Layout from "@components/astro/Layout.astro";
+import Header from "@components/astro/Header.astro";
+import Footer from "@components/astro/Footer.astro";
 
 const githubOrg = "CarQuizHub";
 const repoWeb = "carlogoquiz-web";
@@ -40,7 +40,7 @@ const sections = [
         My domain is backend, so I've been leaning on Claude to help build and maintain the frontend web worker which is the Astro + Svelte
         layer you're looking at right now.
       </p>
-    `
+    `,
   },
   {
     title: "How it's built",
@@ -71,7 +71,7 @@ const sections = [
         Each quiz session runs in its own Durable Object with isolated SQLite storage which handles game state, scoring,
         lives, and progression. Brand data is served from D1 and cached in KV for fast lookups.
       </p>
-    `
+    `,
   },
   {
     title: "The tech stack",
@@ -117,7 +117,7 @@ const sections = [
           </ul>
         </div>
       </div>
-    `
+    `,
   },
   {
     title: "What's next",
@@ -155,205 +155,369 @@ const sections = [
           </p>
         </div>
       </div>
-    `
-  }
+    `,
+  },
 ];
 ---
 
-<Layout title="About" description="About CarLogoQuiz — why it was built, how it works, and what's next">
-  <Header/>
-  <div id="hero-glow" class="fixed inset-0 pointer-events-none z-[-1] transition-opacity duration-300" aria-hidden="true"></div>
+<Layout
+  title="About"
+  description="About CarLogoQuiz — why it was built, how it works, and what's next"
+>
+  <Header />
+  <div
+    id="hero-glow"
+    class="pointer-events-none fixed inset-0 z-[-1] transition-opacity duration-300"
+    aria-hidden="true"
+  >
+  </div>
 
-  <main class="flex-1 flex flex-col items-center px-4 pb-10 md:pb-14 max-w-3xl mx-auto pt-[7rem] relative">
-
+  <main
+    class="relative mx-auto flex max-w-3xl flex-1 flex-col items-center px-4 pb-10 pt-[7rem] md:pb-14"
+  >
     <!-- Page Header -->
-    <section class="text-center mb-12 md:mb-16 w-full relative z-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-primary/20 bg-accent-primary/5 mb-5 a-entrance" style="animation-delay: 0.1s;">
+    <section class="relative z-10 mb-12 w-full text-center md:mb-16">
+      <div
+        class="a-entrance mb-5 inline-flex items-center gap-2 rounded-full border border-accent-primary/20 bg-accent-primary/5 px-4 py-1.5"
+        style="animation-delay: 0.1s;"
+      >
         <span class="relative flex h-2 w-2">
-          <span class="absolute inline-flex h-full w-full rounded-full bg-accent-primary opacity-75 animate-ping"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-accent-primary"></span>
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-primary opacity-75"
+          ></span>
+          <span
+            class="relative inline-flex h-2 w-2 rounded-full bg-accent-primary"
+          ></span>
         </span>
-        <span class="text-[10px] font-mono uppercase tracking-widest text-accent-primary">About</span>
+        <span
+          class="font-mono text-[10px] uppercase tracking-widest text-accent-primary"
+          >About</span
+        >
       </div>
 
-      <h1 class="text-4xl md:text-5xl font-extrabold uppercase tracking-tight mb-4 a-entrance" style="animation-delay: 0.2s;">
+      <h1
+        class="a-entrance mb-4 text-4xl font-extrabold uppercase tracking-tight md:text-5xl"
+        style="animation-delay: 0.2s;"
+      >
         The <span class="text-gradient-accent">Story</span>
       </h1>
 
-      <p class="text-sm text-text-muted max-w-md mx-auto a-entrance" style="animation-delay: 0.35s;">
-        A personal project built to learn the Cloudflare stack and get hands-on experience with building a website end-to-end.
+      <p
+        class="a-entrance mx-auto max-w-md text-sm text-text-muted"
+        style="animation-delay: 0.35s;"
+      >
+        A personal project built to learn the Cloudflare stack and get hands-on
+        experience with building a website end-to-end.
       </p>
 
-      <div class="w-48 h-px mx-auto mt-5 bg-gradient-to-r from-transparent via-accent-primary/40 to-transparent a-entrance" style="animation-delay: 0.45s;"></div>
+      <div
+        class="a-entrance mx-auto mt-5 h-px w-48 bg-gradient-to-r from-transparent via-accent-primary/40 to-transparent"
+        style="animation-delay: 0.45s;"
+      >
+      </div>
     </section>
 
     <!-- Quick highlights -->
-    <section class="w-full grid grid-cols-1 md:grid-cols-3 gap-4 mb-14 md:mb-16 relative z-10">
+    <section
+      class="relative z-10 mb-14 grid w-full grid-cols-1 gap-4 md:mb-16 md:grid-cols-3"
+    >
       <div
-        class="card card-custom card-interactive group p-5 text-center a-entrance
-               transition-all duration-500
-               hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] hover:-translate-y-1
-               active:-translate-y-1"
+        class="card-custom card-interactive a-entrance group card p-5 text-center transition-all duration-500 hover:-translate-y-1 hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] active:-translate-y-1"
         style="animation-delay: 0.55s;"
       >
-        <div class="relative w-10 h-10 mx-auto mb-3">
-          <div class="absolute inset-0 bg-accent-primary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative z-10 w-10 h-10 rounded-xl bg-bg-tertiary flex items-center justify-center text-accent-primary/70
-                      transition-all duration-500 group-hover:bg-accent-primary/10 group-hover:text-accent-primary group-hover:-translate-y-0.5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2v4"/><path d="M12 18v4"/>
-              <path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/>
-              <path d="M2 12h4"/><path d="M18 12h4"/>
-              <path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/>
-              <circle cx="12" cy="12" r="3"/>
+        <div class="relative mx-auto mb-3 h-10 w-10">
+          <div
+            class="absolute inset-0 rounded-xl bg-accent-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100"
+          >
+          </div>
+          <div
+            class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary/70 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-accent-primary/10 group-hover:text-accent-primary"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M12 2v4"></path><path d="M12 18v4"></path>
+              <path d="M4.93 4.93l2.83 2.83"></path><path
+                d="M16.24 16.24l2.83 2.83"></path>
+              <path d="M2 12h4"></path><path d="M18 12h4"></path>
+              <path d="M4.93 19.07l2.83-2.83"></path><path
+                d="M16.24 7.76l2.83-2.83"></path>
+              <circle cx="12" cy="12" r="3"></circle>
             </svg>
           </div>
         </div>
-        <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70">Personal project</p>
-        <p class="text-sm text-text-secondary mt-2">Built to learn, shipped to share.</p>
+        <p
+          class="font-mono text-xs uppercase tracking-widest text-text-muted/70"
+        >
+          Personal project
+        </p>
+        <p class="mt-2 text-sm text-text-secondary">
+          Built to learn, shipped to share.
+        </p>
       </div>
 
       <div
-        class="card card-custom card-interactive group p-5 text-center a-entrance
-               transition-all duration-500
-               hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] hover:-translate-y-1
-               active:-translate-y-1"
+        class="card-custom card-interactive a-entrance group card p-5 text-center transition-all duration-500 hover:-translate-y-1 hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] active:-translate-y-1"
         style="animation-delay: 0.65s;"
       >
-        <div class="relative w-10 h-10 mx-auto mb-3">
-          <div class="absolute inset-0 bg-accent-primary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative z-10 w-10 h-10 rounded-xl bg-bg-tertiary flex items-center justify-center text-accent-primary/70
-                      transition-all duration-500 group-hover:bg-accent-primary/10 group-hover:text-accent-primary group-hover:-translate-y-0.5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
+        <div class="relative mx-auto mb-3 h-10 w-10">
+          <div
+            class="absolute inset-0 rounded-xl bg-accent-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100"
+          >
+          </div>
+          <div
+            class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary/70 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-accent-primary/10 group-hover:text-accent-primary"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
           </div>
         </div>
-        <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70">Full Cloudflare stack</p>
-        <p class="text-sm text-text-secondary mt-2">Workers, Durable Objects, D1, KV, R2.</p>
+        <p
+          class="font-mono text-xs uppercase tracking-widest text-text-muted/70"
+        >
+          Full Cloudflare stack
+        </p>
+        <p class="mt-2 text-sm text-text-secondary">
+          Workers, Durable Objects, D1, KV, R2.
+        </p>
       </div>
 
-        <a
-            href={links.org}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card card-custom card-interactive group p-5 text-center a-entrance
-                    transition-all duration-500
-                    hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] hover:-translate-y-1
-                    active:-translate-y-1"
-            style="animation-delay: 0.75s;"
-        >
-        <div class="relative w-10 h-10 mx-auto mb-3">
-          <div class="absolute inset-0 bg-accent-primary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative z-10 w-10 h-10 rounded-xl bg-bg-tertiary flex items-center justify-center text-accent-primary/70
-                      transition-all duration-500 group-hover:bg-accent-primary/10 group-hover:text-accent-primary group-hover:-translate-y-0.5">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/>
-              <line x1="10" y1="14" x2="21" y2="3"/>
+      <a
+        href={links.org}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="card-custom card-interactive a-entrance group card p-5 text-center transition-all duration-500 hover:-translate-y-1 hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] active:-translate-y-1"
+        style="animation-delay: 0.75s;"
+      >
+        <div class="relative mx-auto mb-3 h-10 w-10">
+          <div
+            class="absolute inset-0 rounded-xl bg-accent-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100 group-active:opacity-100"
+          >
+          </div>
+          <div
+            class="relative z-10 flex h-10 w-10 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary/70 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:bg-accent-primary/10 group-hover:text-accent-primary"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+              ></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </div>
         </div>
-        <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70">Open source</p>
-        <p class="text-sm text-text-secondary mt-2">Both repos are public on GitHub.</p>
-    </a>
+        <p
+          class="font-mono text-xs uppercase tracking-widest text-text-muted/70"
+        >
+          Open source
+        </p>
+        <p class="mt-2 text-sm text-text-secondary">
+          Both repos are public on GitHub.
+        </p>
+      </a>
     </section>
 
     <!-- Accordion -->
-    <section class="w-full space-y-3 relative z-10" id="about-list">
-      {sections.map((s, index) => (
-        <div
-          class="collapse collapse-arrow bg-bg-card border border-white/5 rounded-2xl a-item group/about transition-[border-color,box-shadow] duration-500
-                 hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)] a-entrance"
-          style={`animation-delay: ${0.85 + index * 0.1}s;`}
-        >
-          <input type="checkbox" />
+    <section class="relative z-10 w-full space-y-3" id="about-list">
+      {
+        sections.map((s, index) => (
+          <div
+            class="a-item group/about a-entrance collapse collapse-arrow rounded-2xl border border-white/5 bg-bg-card transition-[border-color,box-shadow] duration-500 hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)]"
+            style={`animation-delay: ${0.85 + index * 0.1}s;`}
+          >
+            <input type="checkbox" />
 
-          <div class="collapse-title pr-12 py-5 md:py-6 flex items-center gap-4 cursor-pointer">
-            <div class="w-10 h-10 shrink-0 rounded-xl bg-bg-tertiary flex items-center justify-center text-accent-primary/60
-                        transition-[border-color,box-shadow,transform,background-color,color] duration-500
-                        group-hover/about:text-accent-primary group-hover/about:bg-accent-primary/10 group-hover/about:-translate-y-0.5">
-              <Fragment set:html={s.icon} />
+            <div class="collapse-title flex cursor-pointer items-center gap-4 py-5 pr-12 md:py-6">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary/60 transition-[border-color,box-shadow,transform,background-color,color] duration-500 group-hover/about:-translate-y-0.5 group-hover/about:bg-accent-primary/10 group-hover/about:text-accent-primary">
+                <Fragment set:html={s.icon} />
+              </div>
+              <span class="text-sm font-semibold leading-snug text-text-primary transition-colors duration-300 group-hover/about:text-accent-primary md:text-base">
+                {s.title}
+              </span>
             </div>
-            <span class="text-sm md:text-base font-semibold text-text-primary transition-colors duration-300 group-hover/about:text-accent-primary leading-snug">
-              {s.title}
-            </span>
-          </div>
 
-          <div class="collapse-content px-6 pb-0">
-            <div class="pl-14 pb-6">
-              <div class="w-10 h-px bg-gradient-to-r from-accent-primary/30 to-transparent mb-4"></div>
-              <div class="text-sm text-text-secondary leading-relaxed about-rich" set:html={s.body} />
+            <div class="collapse-content px-6 pb-0">
+              <div class="pb-6 pl-14">
+                <div class="mb-4 h-px w-10 bg-gradient-to-r from-accent-primary/30 to-transparent" />
+                <div
+                  class="about-rich text-sm leading-relaxed text-text-secondary"
+                  set:html={s.body}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </section>
 
     <!-- Repo cards + personal GitHub -->
-    <section class="w-full mt-10 md:mt-12 relative z-10 a-entrance" style="animation-delay: 1.45s;">
-      <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70 mb-4 px-1">Repositories & Links</p>
+    <section
+      class="a-entrance relative z-10 mt-10 w-full md:mt-12"
+      style="animation-delay: 1.45s;"
+    >
+      <p
+        class="mb-4 px-1 font-mono text-xs uppercase tracking-widest text-text-muted/70"
+      >
+        Repositories & Links
+      </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <a href={links.web} target="_blank" rel="noopener noreferrer"
-           class="group/link block rounded-xl border border-white/5 bg-bg-card p-5
-                  transition-[border-color,box-shadow,transform] duration-500
-                  hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)] hover:-translate-y-0.5">
-          <div class="w-9 h-9 rounded-lg bg-bg-tertiary flex items-center justify-center text-accent-primary/60 mb-3
-                      transition-all duration-500 group-hover/link:bg-accent-primary/10 group-hover/link:text-accent-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+      <div class="grid grid-cols-1 gap-3 md:grid-cols-3">
+        <a
+          href={links.web}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group/link block rounded-xl border border-white/5 bg-bg-card p-5 transition-[border-color,box-shadow,transform] duration-500 hover:-translate-y-0.5 hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)]"
+        >
+          <div
+            class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-bg-tertiary text-accent-primary/60 transition-all duration-500 group-hover/link:bg-accent-primary/10 group-hover/link:text-accent-primary"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polyline points="16 18 22 12 16 6"></polyline><polyline
+                points="8 6 2 12 8 18"></polyline>
             </svg>
           </div>
-          <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70">Frontend</p>
-          <p class="text-sm text-text-secondary mt-1.5 leading-relaxed">{githubOrg}/{repoWeb}</p>
-          <div class="mt-3 inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-accent-primary/80 group-hover/link:text-accent-primary">
+          <p
+            class="font-mono text-xs uppercase tracking-widest text-text-muted/70"
+          >
+            Frontend
+          </p>
+          <p class="mt-1.5 text-sm leading-relaxed text-text-secondary">
+            {githubOrg}/{repoWeb}
+          </p>
+          <div
+            class="mt-3 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-accent-primary/80 group-hover/link:text-accent-primary"
+          >
             <span>View repo</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7"/><path d="M8 7h9v9"/>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M7 17L17 7"></path><path d="M8 7h9v9"></path>
             </svg>
           </div>
         </a>
 
-        <a href={links.api} target="_blank" rel="noopener noreferrer"
-           class="group/link block rounded-xl border border-white/5 bg-bg-card p-5
-                  transition-[border-color,box-shadow,transform] duration-500
-                  hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)] hover:-translate-y-0.5">
-          <div class="w-9 h-9 rounded-lg bg-bg-tertiary flex items-center justify-center text-accent-primary/60 mb-3
-                      transition-all duration-500 group-hover/link:bg-accent-primary/10 group-hover/link:text-accent-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-4-4H6a2 2 0 0 0-2 2z"/>
-              <path d="M8 11h8"/><path d="M8 15h6"/>
+        <a
+          href={links.api}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group/link block rounded-xl border border-white/5 bg-bg-card p-5 transition-[border-color,box-shadow,transform] duration-500 hover:-translate-y-0.5 hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)]"
+        >
+          <div
+            class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-bg-tertiary text-accent-primary/60 transition-all duration-500 group-hover/link:bg-accent-primary/10 group-hover/link:text-accent-primary"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M4 19a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-4-4H6a2 2 0 0 0-2 2z"
+              ></path>
+              <path d="M8 11h8"></path><path d="M8 15h6"></path>
             </svg>
           </div>
-          <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70">Backend</p>
-          <p class="text-sm text-text-secondary mt-1.5 leading-relaxed">{githubOrg}/{repoApi}</p>
-          <div class="mt-3 inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-accent-primary/80 group-hover/link:text-accent-primary">
+          <p
+            class="font-mono text-xs uppercase tracking-widest text-text-muted/70"
+          >
+            Backend
+          </p>
+          <p class="mt-1.5 text-sm leading-relaxed text-text-secondary">
+            {githubOrg}/{repoApi}
+          </p>
+          <div
+            class="mt-3 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-accent-primary/80 group-hover/link:text-accent-primary"
+          >
             <span>View repo</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7"/><path d="M8 7h9v9"/>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M7 17L17 7"></path><path d="M8 7h9v9"></path>
             </svg>
           </div>
         </a>
 
-        <a href={links.personal} target="_blank" rel="noopener noreferrer"
-           class="group/link block rounded-xl border border-white/5 bg-bg-card p-5
-                  transition-[border-color,box-shadow,transform] duration-500
-                  hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)] hover:-translate-y-0.5">
-          <div class="w-9 h-9 rounded-lg bg-bg-tertiary flex items-center justify-center text-accent-primary/60 mb-3
-                      transition-all duration-500 group-hover/link:bg-accent-primary/10 group-hover/link:text-accent-primary">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-              <circle cx="12" cy="7" r="4"/>
+        <a
+          href={links.personal}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group/link block rounded-xl border border-white/5 bg-bg-card p-5 transition-[border-color,box-shadow,transform] duration-500 hover:-translate-y-0.5 hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)]"
+        >
+          <div
+            class="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-bg-tertiary text-accent-primary/60 transition-all duration-500 group-hover/link:bg-accent-primary/10 group-hover/link:text-accent-primary"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
             </svg>
           </div>
-          <p class="text-xs font-mono uppercase tracking-widest text-text-muted/70">Author</p>
-          <p class="text-sm text-text-secondary mt-1.5 leading-relaxed">{personalGithub}</p>
-          <div class="mt-3 inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-accent-primary/80 group-hover/link:text-accent-primary">
+          <p
+            class="font-mono text-xs uppercase tracking-widest text-text-muted/70"
+          >
+            Author
+          </p>
+          <p class="mt-1.5 text-sm leading-relaxed text-text-secondary">
+            {personalGithub}
+          </p>
+          <div
+            class="mt-3 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-accent-primary/80 group-hover/link:text-accent-primary"
+          >
             <span>View profile</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7"/><path d="M8 7h9v9"/>
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M7 17L17 7"></path><path d="M8 7h9v9"></path>
             </svg>
           </div>
         </a>
@@ -361,27 +525,41 @@ const sections = [
     </section>
 
     <!-- CTA -->
-    <section class="mt-12 md:mt-16 mb-2 w-full a-entrance relative z-10" style="animation-delay: 1.55s;">
-      <div class="relative rounded-3xl border border-white/5 bg-bg-secondary overflow-hidden px-6 py-12 md:py-14 text-center">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,60,0,0.06)_0%,transparent_70%)] pointer-events-none"></div>
+    <section
+      class="a-entrance relative z-10 mb-2 mt-12 w-full md:mt-16"
+      style="animation-delay: 1.55s;"
+    >
+      <div
+        class="relative overflow-hidden rounded-3xl border border-white/5 bg-bg-secondary px-6 py-12 text-center md:py-14"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,60,0,0.06)_0%,transparent_70%)]"
+        >
+        </div>
 
         <div class="relative z-10 flex flex-col items-center gap-5">
-            <h2 class="text-2xl md:text-3xl font-extrabold uppercase tracking-tight leading-tight">
-                Ready to <span class="text-gradient-accent">Play?</span>
-            </h2>
+          <h2
+            class="text-2xl font-extrabold uppercase leading-tight tracking-tight md:text-3xl"
+          >
+            Ready to <span class="text-gradient-accent">Play?</span>
+          </h2>
 
-            <p class="text-sm text-text-muted max-w-sm">
-                Test your car logo knowledge — no sign up required.
-            </p>
+          <p class="max-w-sm text-sm text-text-muted">
+            Test your car logo knowledge — no sign up required.
+          </p>
 
-            <div class="w-48 h-px bg-gradient-to-r from-transparent via-accent-primary/30 to-transparent"></div>
-            <span class="btn btn-lg gap-4 px-12 py-4 text-lg rounded-xl inline-flex items-center justify-center border border-[#ff3c00]/30 bg-[#ff3c00]/40 text-white/60 backdrop-blur-xl shadow-[0_0_30px_rgba(255,60,0,0.2),0_0_60px_rgba(255,60,0,0.1)] ring-1 ring-[#ff3c00]/25 cursor-default transition-all duration-300 active:scale-[0.97] active:bg-[#ff3c00]/55 active:shadow-[0_0_40px_rgba(255,60,0,0.35),0_0_80px_rgba(255,60,0,0.15)] active:ring-[#ff3c00]/35 select-none">
-            <span class="tracking-widest text-sm font-medium">COMING SOON</span>
-            </span>
+          <div
+            class="h-px w-48 bg-gradient-to-r from-transparent via-accent-primary/30 to-transparent"
+          >
+          </div>
+          <span
+            class="btn btn-lg inline-flex cursor-default select-none items-center justify-center gap-4 rounded-xl border border-[#ff3c00]/30 bg-[#ff3c00]/40 px-12 py-4 text-lg text-white/60 shadow-[0_0_30px_rgba(255,60,0,0.2),0_0_60px_rgba(255,60,0,0.1)] ring-1 ring-[#ff3c00]/25 backdrop-blur-xl transition-all duration-300 active:scale-[0.97] active:bg-[#ff3c00]/55 active:shadow-[0_0_40px_rgba(255,60,0,0.35),0_0_80px_rgba(255,60,0,0.15)] active:ring-[#ff3c00]/35"
+          >
+            <span class="text-sm font-medium tracking-widest">COMING SOON</span>
+          </span>
         </div>
       </div>
     </section>
-
   </main>
   <Footer />
 </Layout>
@@ -396,7 +574,11 @@ const sections = [
   }
 
   @keyframes aIn {
-    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
   }
 
   /* ── DaisyUI accordion tweaks ── */
@@ -409,7 +591,9 @@ const sections = [
 
   .a-item .collapse-title::after {
     color: rgba(255, 255, 255, 0.2);
-    transition: color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      color 0.3s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .a-item:hover .collapse-title::after {
@@ -437,20 +621,36 @@ const sections = [
   }
 
   /* Rich content spacing */
-  .about-rich p { margin-top: 0.6rem; }
-  .about-rich p:first-child { margin-top: 0; }
+  .about-rich p {
+    margin-top: 0.6rem;
+  }
+  .about-rich p:first-child {
+    margin-top: 0;
+  }
 
   @media (prefers-reduced-motion: reduce) {
-    .a-entrance { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+    .a-entrance {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
   }
 </style>
 
 <script>
-  const heroGlow = document.getElementById('hero-glow');
+  const heroGlow = document.getElementById("hero-glow");
   if (heroGlow) {
-    window.addEventListener('scroll', () => {
-      const fade = Math.max(0.25, 1 - window.scrollY / (window.innerHeight * 2.5));
-      heroGlow.style.opacity = String(fade);
-    }, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        const fade = Math.max(
+          0.25,
+          1 - window.scrollY / (window.innerHeight * 2.5),
+        );
+        heroGlow.style.opacity = String(fade);
+      },
+      { passive: true },
+    );
   }
 </script>

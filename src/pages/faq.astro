@@ -1,149 +1,219 @@
 ---
-import Layout from '@components/astro/Layout.astro';
-import Header from '@components/astro/Header.astro';
-import Footer from '@components/astro/Footer.astro';
+import Layout from "@components/astro/Layout.astro";
+import Header from "@components/astro/Header.astro";
+import Footer from "@components/astro/Footer.astro";
 
 const faqs = [
   {
     question: "How does the quiz work?",
-    answer: "You'll be shown car logos one at a time and need to identify the brand. You have 3 lives — each wrong answer costs you one life. The game ends when you lose all lives or complete all 15 questions.",
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`
+    answer:
+      "You'll be shown car logos one at a time and need to identify the brand. You have 3 lives — each wrong answer costs you one life. The game ends when you lose all lives or complete all 15 questions.",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
   },
   {
     question: "How are points calculated?",
-    answer: "Points are based on difficulty. Easy logos earn 10 points, Medium earn 25 points, Hard earn 50 points, Expert earn 100 points, and Legendary logos earn 200 points.",
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
+    answer:
+      "Points are based on difficulty. Easy logos earn 10 points, Medium earn 25 points, Hard earn 50 points, Expert earn 100 points, and Legendary logos earn 200 points.",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
   },
   {
     question: "Do I need to create an account?",
-    answer: "No! You can play immediately without signing up. Your progress is saved locally in your browser.",
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`
+    answer:
+      "No! You can play immediately without signing up. Your progress is saved locally in your browser.",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
   },
   {
     question: "How many car brands are included?",
-    answer: "We have over 100 car brands from 18 different countries, ranging from mainstream manufacturers to exotic supercar makers and obscure vintage marques.",
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`
+    answer:
+      "We have over 100 car brands from 18 different countries, ranging from mainstream manufacturers to exotic supercar makers and obscure vintage marques.",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>`,
   },
   {
     question: "Can I play on mobile?",
-    answer: "Yes! The quiz is fully responsive and works great on phones, tablets, and desktop computers. The interface adapts to any screen size.",
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`
+    answer:
+      "Yes! The quiz is fully responsive and works great on phones, tablets, and desktop computers. The interface adapts to any screen size.",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
   },
   {
     question: "How are difficulty levels determined?",
-    answer: "Difficulty is based on brand recognition and rarity. Common brands like Toyota and BMW are easier, while niche manufacturers like Koenigsegg and Pagani are harder. The quiz progressively increases in difficulty as you answer correctly.",
-    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>`
-  }
+    answer:
+      "Difficulty is based on brand recognition and rarity. Common brands like Toyota and BMW are easier, while niche manufacturers like Koenigsegg and Pagani are harder. The quiz progressively increases in difficulty as you answer correctly.",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>`,
+  },
 ];
 ---
 
-<Layout title="FAQ" description="Frequently asked questions about Car Logo Quiz">
-  <Header/>
-  <div id="hero-glow" class="fixed inset-0 pointer-events-none z-[-1] transition-opacity duration-300" aria-hidden="true"></div>
+<Layout
+  title="FAQ"
+  description="Frequently asked questions about Car Logo Quiz"
+>
+  <Header />
+  <div
+    id="hero-glow"
+    class="pointer-events-none fixed inset-0 z-[-1] transition-opacity duration-300"
+    aria-hidden="true"
+  >
+  </div>
 
-  <main class="flex-1 flex flex-col items-center px-4 pb-8 md:pb-12 max-w-3xl mx-auto pt-[7rem]">
-
+  <main
+    class="mx-auto flex max-w-3xl flex-1 flex-col items-center px-4 pb-8 pt-[7rem] md:pb-12"
+  >
     <!-- Page Header -->
-    <section class="text-center mb-12 md:mb-16 w-full">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-primary/20 bg-accent-primary/5 mb-5 faq-entrance" style="animation-delay: 0.1s;">
+    <section class="mb-12 w-full text-center md:mb-16">
+      <div
+        class="faq-entrance mb-5 inline-flex items-center gap-2 rounded-full border border-accent-primary/20 bg-accent-primary/5 px-4 py-1.5"
+        style="animation-delay: 0.1s;"
+      >
         <span class="relative flex h-2 w-2">
-          <span class="absolute inline-flex h-full w-full rounded-full bg-accent-primary opacity-75 animate-ping"></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-accent-primary"></span>
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-primary opacity-75"
+          ></span>
+          <span
+            class="relative inline-flex h-2 w-2 rounded-full bg-accent-primary"
+          ></span>
         </span>
-        <span class="text-[10px] font-mono uppercase tracking-widest text-accent-primary">Support</span>
+        <span
+          class="font-mono text-[10px] uppercase tracking-widest text-accent-primary"
+          >Support</span
+        >
       </div>
 
-      <h1 class="text-4xl md:text-5xl font-extrabold uppercase tracking-tight mb-4 faq-entrance" style="animation-delay: 0.2s;">
+      <h1
+        class="faq-entrance mb-4 text-4xl font-extrabold uppercase tracking-tight md:text-5xl"
+        style="animation-delay: 0.2s;"
+      >
         Got <span class="text-gradient-accent">Questions?</span>
       </h1>
-      
-      <p class="text-sm text-text-muted max-w-md mx-auto faq-entrance" style="animation-delay: 0.35s;">
+
+      <p
+        class="faq-entrance mx-auto max-w-md text-sm text-text-muted"
+        style="animation-delay: 0.35s;"
+      >
         Everything you need to know about the Car Logo Quiz
       </p>
 
-      <div class="w-48 h-px mx-auto mt-5 bg-gradient-to-r from-transparent via-accent-primary/40 to-transparent faq-entrance" style="animation-delay: 0.45s;"></div>
+      <div
+        class="faq-entrance mx-auto mt-5 h-px w-48 bg-gradient-to-r from-transparent via-accent-primary/40 to-transparent"
+        style="animation-delay: 0.45s;"
+      >
+      </div>
     </section>
 
     <!-- FAQ Accordion -->
     <section class="w-full space-y-3" id="faq-list">
-      {faqs.map((faq, index) => (
-        <div 
-          class="collapse collapse-arrow bg-bg-card border border-white/5 rounded-2xl faq-item group/faq transition-[border-color,box-shadow] duration-500 hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)] faq-entrance"
-          style={`animation-delay: ${0.4 + index * 0.1}s;`}
-          data-faq-index={index}
-        >
-          <input type="checkbox" />
-          
-          <div class="collapse-title pr-12 py-5 md:py-6 flex items-center gap-4 cursor-pointer">
-            <!-- Icon -->
-            <div class="w-10 h-10 shrink-0 rounded-xl bg-bg-tertiary flex items-center justify-center text-accent-primary/60 transition-[border-color,box-shadow] duration-500 group-hover/faq:text-accent-primary group-hover/faq:bg-accent-primary/10 group-hover/faq:-translate-y-0.5">
-              <Fragment set:html={faq.icon} />
+      {
+        faqs.map((faq, index) => (
+          <div
+            class="faq-item group/faq faq-entrance collapse collapse-arrow rounded-2xl border border-white/5 bg-bg-card transition-[border-color,box-shadow] duration-500 hover:border-accent-primary/20 hover:shadow-[0_0_30px_rgba(255,60,0,0.06)]"
+            style={`animation-delay: ${0.4 + index * 0.1}s;`}
+            data-faq-index={index}
+          >
+            <input type="checkbox" />
+
+            <div class="collapse-title flex cursor-pointer items-center gap-4 py-5 pr-12 md:py-6">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary/60 transition-[border-color,box-shadow] duration-500 group-hover/faq:-translate-y-0.5 group-hover/faq:bg-accent-primary/10 group-hover/faq:text-accent-primary">
+                <Fragment set:html={faq.icon} />
+              </div>
+              <span class="text-sm font-semibold leading-snug text-text-primary transition-colors duration-300 group-hover/faq:text-accent-primary md:text-base">
+                {faq.question}
+              </span>
             </div>
-            
-            <!-- Question -->
-            <span class="text-sm md:text-base font-semibold text-text-primary transition-colors duration-300 group-hover/faq:text-accent-primary leading-snug">
-              {faq.question}
-            </span>
-          </div>
-          
-          <div class="collapse-content px-6 pb-0">
-            <div class="pl-14 pb-6">
-              <div class="w-10 h-px bg-gradient-to-r from-accent-primary/30 to-transparent mb-4"></div>
-              <p class="text-sm text-text-secondary leading-relaxed">
-                {faq.answer}
-              </p>
+
+            <div class="collapse-content px-6 pb-0">
+              <div class="pb-6 pl-14">
+                <div class="mb-4 h-px w-10 bg-gradient-to-r from-accent-primary/30 to-transparent" />
+                <p class="text-sm leading-relaxed text-text-secondary">
+                  {faq.answer}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </section>
 
     <!-- Still have questions -->
-    <section class="mt-12 md:mt-16 w-full faq-entrance" style="animation-delay: 1.1s;">
-      <div class="card card-custom p-6 md:p-8 text-center group/contact cursor-default transition-[border-color,box-shadow] duration-500 hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)]">
-        <div class="relative w-12 h-12 mx-auto mb-4">
-          <div class="absolute inset-0 bg-accent-primary/20 rounded-xl blur-xl opacity-0 group-hover/contact:opacity-100 transition-opacity duration-500"></div>
-          <div class="relative z-10 w-12 h-12 bg-bg-tertiary rounded-xl flex items-center justify-center text-accent-primary transition-[border-color,box-shadow] duration-500 group-hover/contact:-translate-y-1 group-hover/contact:bg-accent-primary/10">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    <section
+      class="faq-entrance mt-12 w-full md:mt-16"
+      style="animation-delay: 1.1s;"
+    >
+      <div
+        class="card-custom group/contact card cursor-default p-6 text-center transition-[border-color,box-shadow] duration-500 hover:border-accent-primary/20 hover:shadow-[0_0_40px_rgba(255,60,0,0.08)] md:p-8"
+      >
+        <div class="relative mx-auto mb-4 h-12 w-12">
+          <div
+            class="absolute inset-0 rounded-xl bg-accent-primary/20 opacity-0 blur-xl transition-opacity duration-500 group-hover/contact:opacity-100"
+          >
+          </div>
+          <div
+            class="relative z-10 flex h-12 w-12 items-center justify-center rounded-xl bg-bg-tertiary text-accent-primary transition-[border-color,box-shadow] duration-500 group-hover/contact:-translate-y-1 group-hover/contact:bg-accent-primary/10"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+              ></path>
             </svg>
           </div>
         </div>
-        <h3 class="text-sm font-semibold mb-1 text-text-primary transition-colors duration-300 group-hover/contact:text-accent-primary">
+        <h3
+          class="mb-1 text-sm font-semibold text-text-primary transition-colors duration-300 group-hover/contact:text-accent-primary"
+        >
           Still Have Questions?
         </h3>
-        <p class="text-xs text-text-muted mb-5">
-          We'd love to hear from you
-        </p>
-        <a href="/contact" class="btn btn-sm bg-bg-tertiary border border-white/5 text-text-secondary text-xs font-mono uppercase tracking-widest hover:border-accent-primary/30 hover:text-accent-primary transition-[border-color,box-shadow] duration-300">
+        <p class="mb-5 text-xs text-text-muted">We'd love to hear from you</p>
+        <a
+          href="/contact"
+          class="btn btn-sm border border-white/5 bg-bg-tertiary font-mono text-xs uppercase tracking-widest text-text-secondary transition-[border-color,box-shadow] duration-300 hover:border-accent-primary/30 hover:text-accent-primary"
+        >
           Get in Touch
         </a>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="mt-12 md:mt-16 mb-8 w-full faq-entrance" style="animation-delay: 1.25s;">
-      <div class="relative rounded-3xl border border-white/5 bg-bg-secondary overflow-hidden px-6 py-12 md:py-16 text-center">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,60,0,0.06)_0%,transparent_70%)] pointer-events-none"></div>
-        
+    <section
+      class="faq-entrance mb-8 mt-12 w-full md:mt-16"
+      style="animation-delay: 1.25s;"
+    >
+      <div
+        class="relative overflow-hidden rounded-3xl border border-white/5 bg-bg-secondary px-6 py-12 text-center md:py-16"
+      >
+        <div
+          class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,60,0,0.06)_0%,transparent_70%)]"
+        >
+        </div>
+
         <div class="relative z-10 flex flex-col items-center gap-5">
-          <h2 class="text-2xl md:text-3xl font-extrabold uppercase tracking-tight leading-tight">
+          <h2
+            class="text-2xl font-extrabold uppercase leading-tight tracking-tight md:text-3xl"
+          >
             Ready to <span class="text-gradient-accent">Play?</span>
           </h2>
-          
-          <p class="text-sm text-text-muted max-w-sm">
+
+          <p class="max-w-sm text-sm text-text-muted">
             100+ car logos. 3 lives. How far can you get?
           </p>
 
-          <div class="w-48 h-px bg-gradient-to-r from-transparent via-accent-primary/30 to-transparent"></div>
+          <div
+            class="h-px w-48 bg-gradient-to-r from-transparent via-accent-primary/30 to-transparent"
+          >
+          </div>
 
-          <span class="btn btn-lg gap-4 px-12 py-4 text-lg rounded-xl inline-flex items-center justify-center border border-[#ff3c00]/30 bg-[#ff3c00]/40 text-white/60 backdrop-blur-xl shadow-[0_0_30px_rgba(255,60,0,0.2),0_0_60px_rgba(255,60,0,0.1)] ring-1 ring-[#ff3c00]/25 cursor-default transition-all duration-300 active:scale-[0.97] active:bg-[#ff3c00]/55 active:shadow-[0_0_40px_rgba(255,60,0,0.35),0_0_80px_rgba(255,60,0,0.15)] active:ring-[#ff3c00]/35 select-none">
-            <span class="tracking-widest text-sm font-medium">COMING SOON</span>
+          <span
+            class="btn btn-lg inline-flex cursor-default select-none items-center justify-center gap-4 rounded-xl border border-[#ff3c00]/30 bg-[#ff3c00]/40 px-12 py-4 text-lg text-white/60 shadow-[0_0_30px_rgba(255,60,0,0.2),0_0_60px_rgba(255,60,0,0.1)] ring-1 ring-[#ff3c00]/25 backdrop-blur-xl transition-all duration-300 active:scale-[0.97] active:bg-[#ff3c00]/55 active:shadow-[0_0_40px_rgba(255,60,0,0.35),0_0_80px_rgba(255,60,0,0.15)] active:ring-[#ff3c00]/35"
+          >
+            <span class="text-sm font-medium tracking-widest">COMING SOON</span>
           </span>
         </div>
       </div>
     </section>
-
   </main>
   <Footer />
 </Layout>
@@ -175,7 +245,9 @@ const faqs = [
 
   .faq-item .collapse-title::after {
     color: rgba(255, 255, 255, 0.2);
-    transition: color 0.3s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition:
+      color 0.3s ease,
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .faq-item:hover .collapse-title::after {
@@ -189,7 +261,7 @@ const faqs = [
   /* Active state - accent left border */
   .faq-item:has(input:checked) {
     border-color: rgba(255, 60, 0, 0.25);
-    box-shadow: 
+    box-shadow:
       0 0 30px rgba(255, 60, 0, 0.06),
       inset 3px 0 0 rgba(255, 60, 0, 0.6);
   }
@@ -226,11 +298,18 @@ const faqs = [
   }
 </style>
 <script>
-  const heroGlow = document.getElementById('hero-glow');
+  const heroGlow = document.getElementById("hero-glow");
   if (heroGlow) {
-    window.addEventListener('scroll', () => {
-      const fade = Math.max(0.25, 1 - window.scrollY / (window.innerHeight * 2.5));
-      heroGlow.style.opacity = String(fade);
-    }, { passive: true });
+    window.addEventListener(
+      "scroll",
+      () => {
+        const fade = Math.max(
+          0.25,
+          1 - window.scrollY / (window.innerHeight * 2.5),
+        );
+        heroGlow.style.opacity = String(fade);
+      },
+      { passive: true },
+    );
   }
 </script>
