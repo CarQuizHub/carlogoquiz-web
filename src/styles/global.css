@@ -4,6 +4,7 @@
 /* ============================================
    Car Logo Quiz - Global Styles with Tailwind/DaisyUI
    Design Direction: Automotive Luxury meets Digital Speed
+   Mobile & Touch Optimized
    ============================================ */
 
 /* Tailwind directives */
@@ -17,6 +18,8 @@
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Improve touch scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
   }
 
   body {
@@ -25,6 +28,9 @@
     /* KEY: create a stacking context so ::before/::after z-index works predictably */
     position: relative;
     isolation: isolate;
+
+    /* Disable text selection highlighting on touch (improves UX) */
+    -webkit-tap-highlight-color: transparent;
 
     /* Grey/dark gradient base — lightened */
     background:
@@ -114,6 +120,20 @@
   a:hover {
     @apply text-text-primary;
   }
+
+  /* Active state for touch devices */
+  a:active {
+    @apply text-text-primary;
+  }
+
+  /* Buttons - improve touch targets */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+    /* Enable hardware acceleration on mobile */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
 }
 
 /* Component layer for reusable styles */
@@ -131,20 +151,58 @@
     box-shadow:
       0 20px 60px rgba(255, 60, 0, 0.4),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    /* Optimize for touch */
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    /* Ensure visibility */
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    z-index: 1;
   }
 
   .btn-glow:hover {
     @apply -translate-y-0.5;
     box-shadow: 0 0 50px rgba(255, 60, 0, 0.5);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Active state for touch */
+  .btn-glow:active {
+    box-shadow: 0 0 50px rgba(255, 60, 0, 0.6);
+    transform: translateY(-0.125rem) translateZ(0);
+    opacity: 1;
+    visibility: visible;
   }
 
   /* Card with subtle border */
   .card-custom {
     @apply bg-bg-card border border-white/5 rounded-2xl transition-colors duration-250;
+    /* Enable hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   .card-custom:hover {
     @apply border-accent-primary/20;
+  }
+
+  /* Active state for touch devices */
+  .card-custom:active {
+    @apply border-accent-primary/20;
+  }
+
+  /* Interactive cards for mobile */
+  .card-interactive {
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    /* Prevent text selection flash on tap */
+    -webkit-tap-highlight-color: transparent;
+    /* Ensure minimum touch target size */
+    min-height: 44px;
   }
 
   /* Badge pulse animation */
@@ -159,6 +217,14 @@
   /* Custom transition duration */
   .duration-250 {
     transition-duration: 250ms;
+  }
+
+  /* Touch manipulation optimization */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   /* Scrollbar styling */
@@ -196,4 +262,261 @@ html {
 
 html::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
+}
+
+/* ============================================
+   MOBILE & TABLET OPTIMIZATIONS
+   ============================================ */
+
+/* Touch device specific styles */
+@media (hover: none) and (pointer: coarse) {
+  /* Ensure all interactive elements have proper touch targets */
+  button,
+  a,
+  [role="button"],
+  .tier-card {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve tap response time */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Keep animations at normal speed - only reduce hero entrance slightly */
+  .hero-seq {
+    animation-duration: 0.8s !important;
+  }
+
+  /* Ensure buttons maintain visibility on tap */
+  .btn-glow:active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Optimize performance for complex animations */
+  .card-custom,
+  .tier-card,
+  .btn-glow {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+  }
+}
+
+/* Tablet portrait and landscape */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Optimize spacing for tablets */
+  .hero-pt {
+    padding-top: 5rem;
+  }
+
+  /* Adjust grid layouts */
+  section {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* Mobile specific optimizations */
+@media (max-width: 767px) {
+  /* Reduce heading sizes for mobile */
+  h1 {
+    @apply text-4xl;
+  }
+
+  /* Optimize button sizes */
+  .btn-lg {
+    @apply px-8 py-3 text-base;
+  }
+
+  /* Reduce padding on mobile */
+  .card-custom {
+    @apply p-4;
+  }
+
+  /* Stack elements vertically */
+  .stats {
+    @apply stats-vertical;
+  }
+
+  /* Improve readability */
+  p {
+    @apply text-sm;
+  }
+
+  /* Optimize feature cards for mobile */
+  section[data-reveal-stagger] {
+    gap: 1rem;
+  }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Fix iOS Safari viewport height issues */
+  body {
+    min-height: -webkit-fill-available;
+  }
+
+  /* Improve iOS scroll performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Fix iOS Safari safe areas */
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Android specific optimizations */
+@media (pointer: coarse) and (hover: none) {
+  /* Improve touch response */
+  button,
+  a,
+  .tier-card {
+    cursor: pointer;
+  }
+
+  /* Optimize for Android Chrome */
+  * {
+    -webkit-tap-highlight-color: rgba(255, 60, 0, 0.1);
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-pt {
+    padding-top: 2rem;
+  }
+
+  .hero-py {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Reduce vertical spacing in landscape */
+  section {
+    margin-top: 2rem !important;
+  }
+}
+
+/* High pixel density displays (Retina, etc.) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Sharpen text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimize image rendering */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-seq {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+/* Dark mode optimizations (if implementing later) */
+@media (prefers-color-scheme: dark) {
+  /* Already dark by default, but can add overrides here */
+}
+
+/* Performance optimizations for all devices */
+* {
+  /* Enable GPU acceleration for transforms */
+  will-change: auto;
+}
+
+/* Only apply will-change to animating elements */
+.hero-seq,
+.card-custom:hover,
+.tier-card:active,
+[data-reveal] {
+  will-change: transform, opacity;
+}
+
+/* Remove will-change after animation completes */
+.is-visible {
+  will-change: auto;
+}
+
+/* Optimize font rendering */
+@font-face {
+  font-display: swap;
+}
+
+/* Improve scrolling performance */
+.overflow-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Prevent layout shift */
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Accessibility improvements for touch */
+@media (hover: none) {
+  /* Ensure focus indicators are visible on touch */
+  :focus-visible {
+    outline: 3px solid rgba(255, 60, 0, 0.5);
+    outline-offset: 3px;
+  }
+
+  /* Larger tap targets for accessibility */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* Better touch feedback for interactive cards */
+  .card-interactive:active,
+  .tier-card:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease-out;
+  }
+
+  /* Ensure buttons respond to touch */
+  .btn-glow:active {
+    transform: translateY(-0.125rem) scale(0.98) translateZ(0);
+  }
+
+  /* Make sure group states work on touch */
+  .group:active .group-hover\:scale-110,
+  .group:active .group-active\:scale-110 {
+    transform: scale(1.1);
+  }
+
+  .group:active .group-hover\:-translate-y-1,
+  .group:active .group-active\:-translate-y-1 {
+    transform: translateY(-0.25rem);
+  }
 }
