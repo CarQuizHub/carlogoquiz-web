@@ -78,8 +78,21 @@ const loopItems = [...items, ...items, ...items];
     transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    /* FIX: Add more iOS-specific acceleration hints */
+    -webkit-transform: translateZ(0);
+    -webkit-perspective: 1000;
+    perspective: 1000;
   }
 
+  .ticker-track {
+    width: max-content;
+    will-change: transform;
+    /* FIX: Strengthen hardware acceleration for iOS */
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
   .ticker-logo {
     width: var(--logo-size);
     height: var(--logo-size);
@@ -119,14 +132,6 @@ const loopItems = [...items, ...items, ...items];
     filter: grayscale(0) brightness(1.1)
       drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
     transform: scale(1.3);
-  }
-
-  .ticker-track {
-    width: max-content;
-    will-change: transform;
-    /* Hardware acceleration */
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
   }
 
   /* ── Primary fade: wide, smooth, multi-stop ── */
@@ -260,9 +265,24 @@ const loopItems = [...items, ...items, ...items];
       );
 
       currentRate = 1;
+
+      // FIX: Explicitly play and ensure it's running (iOS Safari fix)
+      animation.play();
+
+      // FIX: Double-check animation is playing after a short delay
+      setTimeout(() => {
+        if (animation && animation.playState !== "running") {
+          animation.play();
+        }
+      }, 100);
     }
 
-    initAnimation();
+    // FIX: Use RAF to ensure DOM is ready before initializing
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        initAnimation();
+      });
+    });
 
     // Helper function to find closest item
     function updateClosestItem(clientX: number) {
@@ -355,5 +375,12 @@ const loopItems = [...items, ...items, ...items];
       },
       { passive: true },
     );
+
+    // FIX: Resume animation if page becomes visible again (iOS background tab fix)
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden && animation && animation.playState !== "running") {
+        animation.play();
+      }
+    });
   });
 </script>
