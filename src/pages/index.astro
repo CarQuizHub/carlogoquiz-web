@@ -561,29 +561,55 @@ import { tickerItems } from '@lib/const';
 
 <style is:global>
   /* ── Viewport-height-responsive hero spacing ── */
-  /* Tuned for 1080p (1920×1080) as the primary target */
-  /* At 1080px vh: 6vh≈65px, 5vh≈54px, 4vh≈43px, 3vh≈32px */
+  /* Default: 1080p values (compressed) */
+  /* @media min-height 1000px: 1440p+ values (original) */
   .hero-pt {
-    padding-top: clamp(4.5rem, 7vh, 6rem);
+    padding-top: 4.5rem;
   }
   .hero-py {
-    padding-top: clamp(1.5rem, 3vh, 2rem);
-    padding-bottom: clamp(1.5rem, 3vh, 2rem);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
   @media (min-width: 768px) {
     .hero-py {
-      padding-top: clamp(2.5rem, 5vh, 4rem);
-      padding-bottom: clamp(2.5rem, 5vh, 4rem);
+      padding-top: 2.5rem;
+      padding-bottom: 2.5rem;
     }
   }
   .hero-desc-mb {
-    margin-bottom: clamp(3.5rem, 7vh, 5.5rem);
+    margin-bottom: 3rem;
   }
   .hero-ticker-mt {
-    margin-top: clamp(2rem, 4vh, 3.5rem);
+    margin-top: 1.5rem;
   }
   .hero-scroll-mt {
-    margin-top: clamp(1.5rem, 3vh, 3rem);
+    margin-top: 1.5rem;
+  }
+
+  /* 1440p+ (accounts for 125% display scaling + browser chrome) */
+  @media (min-height: 1000px) {
+    .hero-pt {
+      padding-top: 6rem;
+    }
+    .hero-py {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .hero-desc-mb {
+      margin-bottom: 5.5rem;
+    }
+    .hero-ticker-mt {
+      margin-top: 3.5rem;
+    }
+    .hero-scroll-mt {
+      margin-top: 3rem;
+    }
+  }
+  @media (min-height: 1000px) and (min-width: 768px) {
+    .hero-py {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
   }
 
     .text-shadow-glow {
