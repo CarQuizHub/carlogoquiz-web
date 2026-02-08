@@ -3,7 +3,10 @@ import cloudflare from "@astrojs/cloudflare";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
 
+import sitemap from "@astrojs/sitemap";
+
 export default defineConfig({
+  site: "https://www.carlogoquiz.com",
   // Server-side rendering for Cloudflare Workers
   output: "server",
 
@@ -19,9 +22,9 @@ export default defineConfig({
   integrations: [
     svelte(),
     tailwind({
-      // Use a custom config file
       configFile: "./tailwind.config.mjs",
     }),
+    sitemap(),
   ],
 
   // Vite configuration
