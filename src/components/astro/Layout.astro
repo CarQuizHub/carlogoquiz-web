@@ -8,11 +8,9 @@ interface Props {
 
 const {
   title,
-  description = "Test your knowledge of car brand logos! Can you identify 15 car logos and prove you're a true automotive enthusiast?",
+  description = "Can you name the car logo? Test your automotive knowledge with 100+ car brands from 18 countries across 5 difficulty levels. Free to play, no sign up required.",
 } = Astro.props;
 
-const fullTitle =
-  title === "Home" ? "Car Logo Quiz" : `${title} | Car Logo Quiz`;
 ---
 
 <!doctype html>
@@ -29,18 +27,44 @@ const fullTitle =
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#ff3c00" />
+    <meta name="theme-color" content="#0a0a0a" />
     <meta name="msapplication-TileColor" content="#0a0a0a" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content={fullTitle} />
+    <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content="https://www.carlogoquiz.com/og-image.png" />
+    <meta property="og:site_name" content="Car Logo Quiz" />
 
-    <!-- Theme color for mobile browsers -->
-    <meta name="theme-color" content="#0a0a0a" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://www.carlogoquiz.com/og-image.png" />
 
-    <title>{fullTitle}</title>
+    <!-- Canonical -->
+    <link rel="canonical" href={Astro.url.href} />
+
+    {title.includes("Car Logo Quiz —") && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Car Logo Quiz",
+        "url": "https://www.carlogoquiz.com",
+        "description": "Test your automotive knowledge with 100+ car brands from 18 countries across 5 difficulty levels.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "GBP"
+        }
+      })} />
+    )}
+
+    <title>{title}</title>
   </head>
   <body class="scrollbar-custom">
     <div class="flex min-h-screen flex-col">

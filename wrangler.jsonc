@@ -5,6 +5,7 @@
   "compatibility_date": "2025-01-29",
   "compatibility_flags": ["nodejs_compat"],
   "account_id": "635c7b208e581906817cd6e7b0b69617",
+  "workers_dev": false,
 
   // Static assets configuration
   "assets": {
@@ -17,16 +18,27 @@
     "enabled": true,
   },
 
+  // Production custom domains
+  "routes": [
+    { "pattern": "carlogoquiz.com/*", "custom_domain": true },
+    { "pattern": "www.carlogoquiz.com/*", "custom_domain": true }
+  ],
   // Development environment
   "env": {
     "dev": {
       "name": "carlogoquiz-web-dev",
+      "workers_dev": false,
+      "routes": [
+        { "pattern": "dev.carlogoquiz.com/*", "custom_domain": true }
+      ],
     },
-
     // Staging environment
     "staging": {
       "name": "carlogoquiz-web-staging",
-      "workers_dev": true,
+      "workers_dev": false,
+      "routes": [
+        { "pattern": "staging.carlogoquiz.com/*", "custom_domain": true }
+      ],
     },
   },
 }
