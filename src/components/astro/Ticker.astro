@@ -61,6 +61,8 @@ const loopItems = [...items, ...items, ...items];
 <style>
   .ticker {
     transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .ticker-logo {
@@ -71,6 +73,10 @@ const loopItems = [...items, ...items, ...items];
     box-sizing: border-box;
     filter: grayscale(0.05);
     transition: filter 0.3s ease, transform 0.3s ease;
+    /* Prevent selection on touch */
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
   }
 
   .ticker-item {
@@ -80,17 +86,19 @@ const loopItems = [...items, ...items, ...items];
     justify-content: center;
     opacity: 0.9;
     transition: opacity 0.3s ease;
+    /* Optimize for touch */
+    -webkit-tap-highlight-color: transparent;
   }
 
-  .ticker.is-hovering .ticker-item {
+  .ticker.is-interacting .ticker-item {
     opacity: 0.35;
   }
 
-  .ticker.is-hovering .ticker-item.is-closest {
+  .ticker.is-interacting .ticker-item.is-closest {
     opacity: 1;
   }
 
-  .ticker.is-hovering .ticker-item.is-closest .ticker-logo {
+  .ticker.is-interacting .ticker-item.is-closest .ticker-logo {
     filter: grayscale(0) brightness(1.1) drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
     transform: scale(1.3);
   }
@@ -98,6 +106,9 @@ const loopItems = [...items, ...items, ...items];
   .ticker-track {
     width: max-content;
     will-change: transform;
+    /* Hardware acceleration */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 
   /* ── Primary fade: wide, smooth, multi-stop ── */
@@ -149,6 +160,24 @@ const loopItems = [...items, ...items, ...items];
       animation: none !important;
     }
   }
+
+  /* Mobile optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    /* Slightly faster transitions on mobile for responsiveness */
+    .ticker-logo {
+      transition: filter 0.2s ease, transform 0.2s ease;
+    }
+
+    .ticker-item {
+      transition: opacity 0.2s ease;
+    }
+
+    /* Optimize performance */
+    .ticker-track {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
 </style>
 
 <script>
@@ -163,6 +192,7 @@ const loopItems = [...items, ...items, ...items];
     let currentRate = 1;
     let targetRate = 1;
     let rafId: number | null = null;
+    let isInteracting = false;
 
     const speedSeconds = parseFloat(
       getComputedStyle(ticker).getPropertyValue("--ticker-duration")
@@ -214,28 +244,15 @@ const loopItems = [...items, ...items, ...items];
 
     initAnimation();
 
-    ticker.addEventListener("mouseenter", () => {
-      ticker.classList.add("is-hovering");
-      setTargetRate(TARGET_RATE);
-    });
-
-    ticker.addEventListener("mouseleave", () => {
-      ticker.classList.remove("is-hovering");
-      setTargetRate(1);
-      for (const item of items) {
-        item.classList.remove("is-closest");
-      }
-    });
-
-    ticker.addEventListener("mousemove", (e) => {
-      const mouseX = e.clientX;
+    // Helper function to find closest item
+    function updateClosestItem(clientX: number) {
       let closestItem: HTMLElement | null = null;
       let closestDist = Infinity;
 
       for (const item of items) {
         const rect = item.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
-        const dist = Math.abs(mouseX - centerX);
+        const dist = Math.abs(clientX - centerX);
         if (dist < closestDist) {
           closestDist = dist;
           closestItem = item;
@@ -246,6 +263,61 @@ const loopItems = [...items, ...items, ...items];
         item.classList.remove("is-closest");
       }
       closestItem?.classList.add("is-closest");
+    }
+
+    function startInteraction() {
+      if (isInteracting) return;
+      isInteracting = true;
+      ticker.classList.add("is-interacting");
+      setTargetRate(TARGET_RATE);
+    }
+
+    function endInteraction() {
+      isInteracting = false;
+      ticker.classList.remove("is-interacting");
+      setTargetRate(1);
+      for (const item of items) {
+        item.classList.remove("is-closest");
+      }
+    }
+
+    // Mouse events (desktop)
+    ticker.addEventListener("mouseenter", startInteraction);
+    ticker.addEventListener("mouseleave", endInteraction);
+
+    ticker.addEventListener("mousemove", (e) => {
+      if (!isInteracting) return;
+      updateClosestItem(e.clientX);
     });
+
+    // Touch events (mobile/tablet)
+    let touchActive = false;
+
+    ticker.addEventListener("touchstart", (e) => {
+      touchActive = true;
+      startInteraction();
+      const touch = e.touches[0];
+      if (touch) {
+        updateClosestItem(touch.clientX);
+      }
+    }, { passive: true });
+
+    ticker.addEventListener("touchmove", (e) => {
+      if (!touchActive) return;
+      const touch = e.touches[0];
+      if (touch) {
+        updateClosestItem(touch.clientX);
+      }
+    }, { passive: true });
+
+    ticker.addEventListener("touchend", () => {
+      touchActive = false;
+      endInteraction();
+    }, { passive: true });
+
+    ticker.addEventListener("touchcancel", () => {
+      touchActive = false;
+      endInteraction();
+    }, { passive: true });
   });
 </script>
