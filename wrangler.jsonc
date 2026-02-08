@@ -21,23 +21,21 @@
   // Production custom domains
   "routes": [
     { "pattern": "carlogoquiz.com/*", "custom_domain": true },
-    { "pattern": "www.carlogoquiz.com/*", "custom_domain": true }
+    { "pattern": "www.carlogoquiz.com/*", "custom_domain": true },
   ],
   // Development environment
   "env": {
     "dev": {
       "name": "carlogoquiz-web-dev",
       "workers_dev": false,
-      "routes": [
-        { "pattern": "dev.carlogoquiz.com/*", "custom_domain": true }
-      ],
+      "routes": [{ "pattern": "dev.carlogoquiz.com/*", "custom_domain": true }],
     },
     // Staging environment
     "staging": {
       "name": "carlogoquiz-web-staging",
       "workers_dev": false,
       "routes": [
-        { "pattern": "staging.carlogoquiz.com/*", "custom_domain": true }
+        { "pattern": "staging.carlogoquiz.com/*", "custom_domain": true },
       ],
     },
   },
