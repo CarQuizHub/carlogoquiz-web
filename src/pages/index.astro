@@ -381,6 +381,177 @@ import { tickerItems } from '@lib/const';
           </div>
         </div>
 
+        <!-- Sign In & Save Progress -->
+        <div class="card card-custom p-8 relative overflow-hidden group cursor-default
+                    transition-all duration-500 hover:border-accent-primary/30 
+                    hover:shadow-[0_0_40px_rgba(255,60,0,0.12)]">
+          <div class="relative z-10">
+            <!-- Icon with glow -->
+            <div class="relative w-10 h-10 rounded-lg bg-bg-tertiary flex items-center justify-center text-accent-primary mb-5
+                        transition-all duration-500 group-hover:scale-110 group-hover:bg-accent-primary/10">
+              <div class="absolute inset-0 bg-accent-primary/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="relative z-10 transition-transform duration-500 group-hover:scale-110">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+                <path d="M12 11v10"/>
+                <path d="M8 15l4 4 4-4"/>
+              </svg>
+            </div>
+            
+            <h3 class="text-lg font-bold text-text-primary mb-2 uppercase tracking-wide
+                      transition-colors duration-300 group-hover:text-accent-primary">
+              Sign In & Save
+            </h3>
+            <p class="text-sm text-text-secondary leading-relaxed mb-4 transition-colors duration-300 group-hover:text-text-primary">
+              Create an account to track your progress, save high scores, and get notified about new features and challenges.
+            </p>
+            
+            <!-- Animated account preview -->
+            <div class="space-y-3">
+              <!-- User profile card -->
+              <div class="flex items-center gap-3 px-4 py-3 rounded-lg bg-bg-primary/50 border border-white/5
+                          transition-all duration-500 group-hover:border-accent-primary/20 group-hover:bg-accent-primary/5">
+                <!-- Avatar with pulse -->
+                <div class="relative w-10 h-10">
+                  <div class="absolute inset-0 rounded-full bg-accent-primary/30 blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div class="relative w-10 h-10 rounded-full bg-gradient-accent flex items-center justify-center text-bg-primary font-bold text-sm
+                              transition-all duration-500 group-hover:scale-110">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                      <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <div class="flex-1 min-w-0">
+                  <div class="h-3 rounded-full bg-bg-tertiary overflow-hidden mb-1.5">
+                    <div class="h-full bg-gradient-to-r from-accent-primary/60 to-accent-secondary/60 w-0 transition-all duration-1000 group-hover:w-[65%]"
+                        style="transition-delay: 200ms;"></div>
+                  </div>
+                  <div class="h-2 w-20 rounded-full bg-bg-tertiary overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-text-muted/40 to-text-muted/20 w-0 transition-all duration-1000 group-hover:w-full"
+                        style="transition-delay: 400ms;"></div>
+                  </div>
+                </div>
+                
+                <!-- Badge -->
+                <div class="px-2 py-1 rounded bg-accent-primary/10 border border-accent-primary/20 opacity-0 transition-all duration-500 group-hover:opacity-100"
+                    style="transition-delay: 600ms;">
+                  <span class="text-[10px] font-mono font-bold text-accent-primary">PRO</span>
+                </div>
+              </div>
+              
+              <!-- Stats preview -->
+              <div class="grid grid-cols-3 gap-2">
+                <div class="px-3 py-2 rounded-lg bg-bg-primary/50 border border-white/5 text-center
+                            transition-all duration-500 group-hover:border-white/10 group-hover:bg-bg-primary/80"
+                    style="transition-delay: 300ms;">
+                  <div class="text-xs font-mono font-bold text-accent-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      style="transition-delay: 500ms;">24</div>
+                  <div class="text-[9px] text-text-muted uppercase tracking-wider">Games</div>
+                </div>
+                <div class="px-3 py-2 rounded-lg bg-bg-primary/50 border border-white/5 text-center
+                            transition-all duration-500 group-hover:border-white/10 group-hover:bg-bg-primary/80"
+                    style="transition-delay: 400ms;">
+                  <div class="text-xs font-mono font-bold text-accent-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      style="transition-delay: 600ms;">8.2k</div>
+                  <div class="text-[9px] text-text-muted uppercase tracking-wider">Score</div>
+                </div>
+                <div class="px-3 py-2 rounded-lg bg-bg-primary/50 border border-white/5 text-center
+                            transition-all duration-500 group-hover:border-white/10 group-hover:bg-bg-primary/80"
+                    style="transition-delay: 500ms;">
+                  <div class="text-xs font-mono font-bold text-accent-primary opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      style="transition-delay: 700ms;">#142</div>
+                  <div class="text-[9px] text-text-muted uppercase tracking-wider">Rank</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Language Support -->
+        <div class="card card-custom p-8 relative overflow-hidden group cursor-default
+                    transition-all duration-500 hover:border-accent-primary/30 
+                    hover:shadow-[0_0_40px_rgba(255,60,0,0.12)]">
+          <div class="relative z-10">
+            <!-- Icon with glow -->
+            <div class="relative w-10 h-10 rounded-lg bg-bg-tertiary flex items-center justify-center text-accent-primary mb-5
+                        transition-all duration-500 group-hover:scale-110 group-hover:bg-accent-primary/10">
+              <div class="absolute inset-0 bg-accent-primary/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="relative z-10 transition-transform duration-500 group-hover:scale-110">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            
+            <h3 class="text-lg font-bold text-text-primary mb-2 uppercase tracking-wide
+                      transition-colors duration-300 group-hover:text-accent-primary">
+              Language Support
+            </h3>
+            <p class="text-sm text-text-secondary leading-relaxed mb-4 transition-colors duration-300 group-hover:text-text-primary">
+              Play in your native language. We're adding support for multiple languages to make the quiz accessible worldwide.
+            </p>
+            
+            <!-- Animated language selector -->
+            <div class="space-y-2">
+              <!-- Language option 1 -->
+              <div class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-bg-primary/50 border border-white/5
+                          transition-all duration-500 group-hover:border-accent-primary/20 group-hover:bg-accent-primary/5
+                          group-hover:translate-x-1"
+                  style="transition-delay: 100ms;">
+                <div class="w-7 h-7 rounded-md bg-bg-tertiary flex items-center justify-center text-lg
+                            transition-all duration-500 group-hover:scale-110 group-hover:bg-accent-primary/10"
+                    style="transition-delay: 200ms;">
+                  🇬🇧
+                </div>
+                <span class="text-sm font-medium text-text-secondary transition-colors duration-300 group-hover:text-text-primary">English</span>
+                <div class="ml-auto w-4 h-4 rounded-full border-2 border-white/10 flex items-center justify-center
+                            transition-all duration-500 group-hover:border-accent-primary/40">
+                  <div class="w-2 h-2 rounded-full bg-accent-primary scale-0 transition-transform duration-500 group-hover:scale-100"
+                      style="transition-delay: 300ms;"></div>
+                </div>
+              </div>
+              
+              <!-- Language option 2 -->
+              <div class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-bg-primary/50 border border-white/5 opacity-60
+                          transition-all duration-500 group-hover:opacity-100 group-hover:border-white/10
+                          group-hover:translate-x-1"
+                  style="transition-delay: 200ms;">
+                <div class="w-7 h-7 rounded-md bg-bg-tertiary flex items-center justify-center text-lg
+                            transition-all duration-500 group-hover:scale-110"
+                    style="transition-delay: 300ms;">
+                  🇪🇸
+                </div>
+                <span class="text-sm font-medium text-text-muted transition-colors duration-300 group-hover:text-text-secondary">Español</span>
+                <div class="ml-auto w-4 h-4 rounded-full border-2 border-white/10"></div>
+              </div>
+              
+              <!-- Language option 3 -->
+              <div class="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-bg-primary/50 border border-white/5 opacity-60
+                          transition-all duration-500 group-hover:opacity-100 group-hover:border-white/10
+                          group-hover:translate-x-1"
+                  style="transition-delay: 300ms;">
+                <div class="w-7 h-7 rounded-md bg-bg-tertiary flex items-center justify-center text-lg
+                            transition-all duration-500 group-hover:scale-110"
+                    style="transition-delay: 400ms;">
+                  🇫🇷
+                </div>
+                <span class="text-sm font-medium text-text-muted transition-colors duration-300 group-hover:text-text-secondary">Français</span>
+                <div class="ml-auto w-4 h-4 rounded-full border-2 border-white/10"></div>
+              </div>
+              
+              <!-- More languages indicator -->
+              <div class="text-center pt-2 opacity-0 transition-all duration-500 group-hover:opacity-100"
+                  style="transition-delay: 500ms;">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-text-muted/60">+ More Languages</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Leaderboards -->
         <div class="card card-custom p-8 relative overflow-hidden group cursor-default
                     transition-all duration-500 hover:border-accent-primary/30 
